@@ -41,6 +41,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:fl
 .nLinks a:hover{color:var(--cyan)}
 .nLinks a:hover::after{transform:scaleX(1)}
 
+/* HAMBURGER MENU */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:110}
+.hamburger span{width:24px;height:2px;background:var(--cyan);border-radius:2px;transition:all .35s cubic-bezier(.22,1,.36,1);display:block}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE MENU OVERLAY */
+.mobileMenu{position:fixed;inset:0;background:rgba(5,12,26,.97);backdrop-filter:blur(20px);z-index:105;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transform:translateY(-100%);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.mobileMenu.open{transform:translateY(0)}
+.mobileMenu a{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;color:var(--muted);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s,transform .2s}
+.mobileMenu a:hover{color:var(--cyan);transform:translateX(8px)}
+
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 60px 60px;position:relative;z-index:2;overflow:hidden}
 .heroInner{max-width:860px}
@@ -63,13 +76,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:fl
 .heroDesc{font-size:1.05rem;color:rgba(221,232,245,.65);line-height:1.85;max-width:580px;margin-bottom:44px;opacity:0;animation:fadeSlide .7s 1.3s ease forwards}
 .heroActions{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeSlide .7s 1.5s ease forwards}
 
-.btnP{padding:14px 34px;background:var(--cyan);color:var(--bg);font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:3px;cursor:none;text-decoration:none;transition:all .25s;display:inline-block;position:relative;overflow:hidden}
+.btnP{padding:14px 34px;background:var(--cyan);color:var(--bg);font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;text-decoration:none;transition:all .25s;display:inline-block;position:relative;overflow:hidden}
 .btnP::before{content:'';position:absolute;inset:0;background:var(--green);transform:translateX(-101%);transition:transform .35s cubic-bezier(.77,0,.18,1)}
 .btnP:hover::before{transform:translateX(0)}
 .btnP span{position:relative;z-index:1}
 .btnP:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,229,255,.3)}
 
-.btnO{padding:14px 34px;background:transparent;color:var(--text);font-family:'Syne',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,229,255,.25);border-radius:3px;cursor:none;text-decoration:none;transition:all .25s;display:inline-block}
+.btnO{padding:14px 34px;background:transparent;color:var(--text);font-family:'Syne',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(0,229,255,.25);border-radius:3px;cursor:pointer;text-decoration:none;transition:all .25s;display:inline-block}
 .btnO:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
 
 /* STATS */
@@ -97,9 +110,21 @@ section{position:relative;z-index:2;padding:100px 60px}
 .sTitle{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;margin-bottom:60px}
 .sTitle em{font-style:normal;color:var(--cyan)}
 
+/* ABOUT SECTION */
+.aboutGrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.aboutText p{font-size:1rem;color:rgba(221,232,245,.72);line-height:1.9;margin-bottom:18px}
+.aboutText p strong{color:var(--cyan)}
+.aboutPills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.pill{padding:7px 16px;border-radius:100px;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.18);font-size:.75rem;color:var(--cyan);letter-spacing:.08em}
+.aboutVisual{display:flex;flex-direction:column;gap:18px}
+.aboutStat{display:flex;align-items:center;gap:18px;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:12px;transition:all .3s}
+.aboutStat:hover{border-color:rgba(0,229,255,.3);transform:translateX(6px)}
+.aboutStatN{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--cyan);min-width:70px}
+.aboutStatL{font-size:.82rem;color:var(--muted);line-height:1.5}
+
 /* SKILLS */
 .skGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-.skCard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;position:relative;overflow:hidden;transition:all .35s;cursor:none}
+.skCard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px;position:relative;overflow:hidden;transition:all .35s;cursor:default}
 .skCard::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(0,229,255,.07),transparent 65%);opacity:0;transition:opacity .3s}
 .skCard:hover::before{opacity:1}
 .skCard:hover{border-color:rgba(0,229,255,.3);transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
@@ -108,7 +133,11 @@ section{position:relative;z-index:2;padding:100px 60px}
 .skIcon{width:42px;height:42px;border-radius:11px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:14px;transition:transform .3s}
 .skCard:hover .skIcon{transform:scale(1.15) rotate(-5deg)}
 .skName{font-family:'Syne',sans-serif;font-weight:700;font-size:.92rem;margin-bottom:7px}
-.skDesc{font-size:.8rem;color:var(--muted);line-height:1.65}
+.skDesc{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:14px}
+/* Skill proficiency bar */
+.skBar{height:3px;background:rgba(255,255,255,.07);border-radius:10px;overflow:hidden}
+.skBarFill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--cyan),var(--violet));width:0%;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+.skCard.vis .skBarFill{width:var(--pct)}
 
 /* EXPERIENCE */
 .expWrap{position:relative;padding-left:40px}
@@ -133,8 +162,12 @@ section{position:relative;z-index:2;padding:100px 60px}
 .projCard:hover .projNum{color:rgba(0,229,255,.15)}
 .projTitle{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:12px}
 .projDesc{font-size:.86rem;color:var(--muted);line-height:1.72}
-.projTag{display:inline-block;margin-top:22px;padding:5px 14px;border-radius:4px;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#a78bfa;transition:all .3s}
+.projFooter{display:flex;align-items:center;justify-content:space-between;margin-top:22px}
+.projTag{display:inline-block;padding:5px 14px;border-radius:4px;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#a78bfa;transition:all .3s}
 .projCard:hover .projTag{background:rgba(124,58,237,.2);border-color:rgba(124,58,237,.5)}
+.projLink{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--muted);text-decoration:none;letter-spacing:.08em;transition:color .2s}
+.projLink:hover{color:var(--cyan)}
+.projLink svg{width:14px;height:14px;stroke:currentColor;fill:none}
 
 /* CERTS */
 .certGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
@@ -158,7 +191,7 @@ section{position:relative;z-index:2;padding:100px 60px}
 /* CONTACT */
 .contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .contactInfo{display:flex;flex-direction:column;gap:16px}
-.cItem{display:flex;align-items:center;gap:16px;padding:18px 22px;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:all .3s}
+.cItem{display:flex;align-items:center;gap:16px;padding:18px 22px;background:var(--card);border:1px solid var(--border);border-radius:10px;transition:all .3s;text-decoration:none;color:inherit}
 .cItem:hover{border-color:var(--cyan);transform:translateX(8px)}
 .cIcon{width:40px;height:40px;border-radius:10px;background:rgba(0,229,255,.07);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:transform .3s}
 .cItem:hover .cIcon{transform:rotate(10deg) scale(1.1)}
@@ -173,6 +206,9 @@ section{position:relative;z-index:2;padding:100px 60px}
 footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28px 60px;display:flex;align-items:center;justify-content:space-between}
 .fName{font-family:'Syne',sans-serif;font-weight:800;font-size:.92rem;color:var(--cyan)}
 .fCopy{font-size:.75rem;color:var(--muted)}
+.fSocials{display:flex;gap:14px}
+.fSocial{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.85rem;text-decoration:none;transition:all .25s}
+.fSocial:hover{border-color:var(--cyan);transform:translateY(-3px);background:rgba(0,229,255,.07)}
 
 /* ALT BG */
 .altBg{background:rgba(10,22,40,.5)}
@@ -180,18 +216,25 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 /* FLOATING ORBS */
 .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:1;filter:blur(80px);animation:orbF linear infinite}
 @keyframes orbF{0%{transform:translate(0,0)}33%{transform:translate(30px,-40px)}66%{transform:translate(-20px,20px)}100%{transform:translate(0,0)}}
-
 @keyframes fadeSlide{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* BACK TO TOP */
+#backTop{position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:50;opacity:0;transform:translateY(10px);transition:all .3s;color:var(--cyan);font-size:1.1rem}
+#backTop.show{opacity:1;transform:translateY(0)}
+#backTop:hover{background:rgba(0,229,255,.2);border-color:var(--cyan);transform:translateY(-3px)}
 
 @media(max-width:900px){
   nav{padding:14px 22px}
   .nLinks{display:none}
+  .hamburger{display:flex}
   section{padding:60px 22px}
   .hero{padding:100px 22px 60px}
   .floatStats{display:none}
   .projGrid{grid-template-columns:1fr}
   .contactGrid{grid-template-columns:1fr}
-  footer{padding:22px;flex-direction:column;gap:8px;text-align:center}
+  .aboutGrid{grid-template-columns:1fr;gap:40px}
+  footer{padding:22px;flex-direction:column;gap:14px;text-align:center}
+  .fSocials{justify-content:center}
 }
 </style>
 </head>
@@ -201,10 +244,21 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 <div id="curR"></div>
 <div id="prog"></div>
 <canvas id="bgCanvas"></canvas>
+<div id="backTop" title="Back to top">↑</div>
 
 <div class="orb" style="width:400px;height:400px;background:rgba(0,229,255,.025);top:10%;left:5%;animation-duration:18s"></div>
 <div class="orb" style="width:300px;height:300px;background:rgba(124,58,237,.03);top:60%;right:5%;animation-duration:22s;animation-delay:-8s"></div>
 <div class="orb" style="width:250px;height:250px;background:rgba(0,255,179,.02);top:35%;left:45%;animation-duration:15s;animation-delay:-3s"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobileMenu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#certs" onclick="closeMobile()">Certs</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -217,6 +271,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
     <li><a href="#certs">Certs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -241,26 +298,67 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
   </div>
 </section>
 
+<!-- ABOUT -->
+<section class="altBg">
+  <div class="sLabel reveal">Who I Am</div>
+  <h2 class="sTitle reveal d1">A Little <em>About Me</em></h2>
+  <div class="aboutGrid">
+    <div class="aboutText reveal-l">
+      <p>I'm <strong>Vikas Singh</strong>, an IT Systems Specialist with <strong>8+ years</strong> of enterprise experience based in Gurgaon, India. I specialize in endpoint management, device lifecycle, and IT automation across large-scale enterprise environments.</p>
+      <p>At <strong>Boston Consulting Group</strong>, I manage IT operations for 500+ staff — from seamless device deployment via SCCM & JAMF to AV operations for high-impact global events, with zero downtime.</p>
+      <p>Beyond the day job, I build automation tools in Python and Batch to eliminate repetitive work, and stay current with certifications in ITIL 4, AI, and cybersecurity.</p>
+      <div class="aboutPills">
+        <span class="pill">SCCM</span>
+        <span class="pill">JAMF</span>
+        <span class="pill">Intune</span>
+        <span class="pill">Autopilot</span>
+        <span class="pill">Python</span>
+        <span class="pill">ServiceNow</span>
+        <span class="pill">ITIL 4</span>
+        <span class="pill">Power BI</span>
+      </div>
+    </div>
+    <div class="aboutVisual reveal-r">
+      <div class="aboutStat">
+        <div class="aboutStatN">8+</div>
+        <div class="aboutStatL">Years of enterprise IT experience across 3 organizations</div>
+      </div>
+      <div class="aboutStat">
+        <div class="aboutStatN">500+</div>
+        <div class="aboutStatL">End users supported at BCG with high SLA adherence</div>
+      </div>
+      <div class="aboutStat">
+        <div class="aboutStatN">30%</div>
+        <div class="aboutStatL">Reduction in escalation rates through workflow optimization</div>
+      </div>
+      <div class="aboutStat">
+        <div class="aboutStatN">150+</div>
+        <div class="aboutStatL">Devices managed with accurate inventory at Puthur Infotech</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SKILLS -->
-<section id="skills" class="altBg">
+<section id="skills">
   <div class="sLabel reveal">Core Competencies</div>
   <h2 class="sTitle reveal d1">Technical <em>Skills</em></h2>
   <div class="skGrid">
-    <div class="skCard reveal d1"><div class="skIcon">🖥️</div><div class="skName">OS Administration</div><div class="skDesc">Windows, macOS, Linux — deployment, configuration, advanced troubleshooting across enterprise environments.</div></div>
-    <div class="skCard reveal d2"><div class="skIcon">📱</div><div class="skName">MDM & Endpoint Management</div><div class="skDesc">SCCM, Intune, JAMF, Autopilot — complete device lifecycle management and compliance enforcement.</div></div>
-    <div class="skCard reveal d3"><div class="skIcon">🔒</div><div class="skName">Endpoint Security</div><div class="skDesc">BitLocker, FileVault, patch management, antivirus monitoring, firewall config, and MDM security policies.</div></div>
-    <div class="skCard reveal d4"><div class="skIcon">🌐</div><div class="skName">Networking</div><div class="skDesc">LAN, TCP/IP, VPN, Cisco — network setup, troubleshooting, and peripheral administration across sites.</div></div>
-    <div class="skCard reveal d5"><div class="skIcon">🎫</div><div class="skName">ITSM & Ticketing</div><div class="skDesc">ServiceNow, BMC Remedy — incident management, SLA adherence, and ITIL 4 certified practices.</div></div>
-    <div class="skCard reveal d6"><div class="skIcon">☁️</div><div class="skName">Microsoft 365</div><div class="skDesc">Office 365, SharePoint, Power BI, Teams — administration and end-user support for productivity suites.</div></div>
-    <div class="skCard reveal d7"><div class="skIcon">🐍</div><div class="skName">Python & Automation</div><div class="skDesc">Scripting, PDF automation, web extraction — reducing manual effort and IT support burden significantly.</div></div>
-    <div class="skCard reveal d8"><div class="skIcon">📦</div><div class="skName">IT Asset Management</div><div class="skDesc">Inventory tracking, vendor coordination, e-waste disposal, and device lifecycle for 150–500+ assets.</div></div>
+    <div class="skCard reveal d1" style="--pct:92%"><div class="skIcon">🖥️</div><div class="skName">OS Administration</div><div class="skDesc">Windows, macOS, Linux — deployment, configuration, advanced troubleshooting across enterprise environments.</div><div class="skBar"><div class="skBarFill"></div></div></div>
+    <div class="skCard reveal d2" style="--pct:90%"><div class="skIcon">📦</div><div class="skName">Endpoint Management</div><div class="skDesc">SCCM, Microsoft Intune, JAMF, Autopilot — device provisioning, policy enforcement, patch management.</div><div class="skBar"><div class="skBarFill"></div></div></div>
+    <div class="skCard reveal d3" style="--pct:88%"><div class="skIcon">🔐</div><div class="skName">Identity & Access</div><div class="skDesc">Active Directory, Azure AD, UMRA, IDM — secure account lifecycle, MFA, and access governance.</div><div class="skBar"><div class="skBarFill"></div></div></div>
+    <div class="skCard reveal d4" style="--pct:85%"><div class="skIcon">🎫</div><div class="skName">ITSM & ServiceNow</div><div class="skDesc">Incident, change, and asset management with ITIL 4 best practices — CMDB, SLA tracking, and reporting.</div><div class="skBar"><div class="skBarFill"></div></div></div>
+    <div class="skCard reveal d5" style="--pct:80%"><div class="skIcon">🐍</div><div class="skName">Python Automation</div><div class="skDesc">Scripting workflows, PDF automation, web scraping — eliminating repetitive tasks and improving efficiency.</div><div class="skBar"><div class="skBarFill"></div></div></div>
+    <div class="skCard reveal d6" style="--pct:82%"><div class="skIcon">📊</div><div class="skName">Data & Reporting</div><div class="skDesc">Excel, Power BI — dashboards, IT asset lifecycle tracking, and workflow analytics for leadership visibility.</div><div class="skBar"><div class="skBarFill"></div></div></div>
+    <div class="skCard reveal d7" style="--pct:78%"><div class="skIcon">🛡️</div><div class="skName">IT Security</div><div class="skDesc">Encryption, firewall policies, patch management, antivirus monitoring — protecting enterprise infrastructure.</div><div class="skBar"><div class="skBarFill"></div></div></div>
+    <div class="skCard reveal d8" style="--pct:75%"><div class="skIcon">🎙️</div><div class="skName">AV & Collaboration</div><div class="skDesc">Zero-downtime AV support for hybrid events, Teams, Zoom — enabling seamless enterprise communication.</div><div class="skBar"><div class="skBarFill"></div></div></div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <div class="sLabel reveal">Work History</div>
-  <h2 class="sTitle reveal d1">Professional <em>Experience</em></h2>
+<section id="experience" class="altBg">
+  <div class="sLabel reveal">Career Journey</div>
+  <h2 class="sTitle reveal d1">Work <em>Experience</em></h2>
   <div class="expWrap">
     <div class="expItem reveal">
       <div class="expDate">August 2022 — Present</div>
@@ -302,7 +400,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 </section>
 
 <!-- ACHIEVEMENTS -->
-<section class="altBg">
+<section>
   <div class="sLabel reveal">Impact</div>
   <h2 class="sTitle reveal d1">Key <em>Achievements</em></h2>
   <div class="achGrid">
@@ -314,7 +412,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 </section>
 
 <!-- PROJECTS -->
-<section id="projects">
+<section id="projects" class="altBg">
   <div class="sLabel reveal">Side Projects</div>
   <h2 class="sTitle reveal d1">Built &amp; <em>Automated</em></h2>
   <div class="projGrid">
@@ -323,20 +421,50 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projNum">01</div>
       <div class="projTitle">Fix Mate – IT Troubleshooting Utility</div>
       <div class="projDesc">A lightweight (&lt;100 KB) .bat automation tool with interactive prompt-driven workflows. Implements self-resolution diagnostics guiding end-users through system issue identification — reducing ticket volume and IT support burden.</div>
-      <span class="projTag">Batch Script · Automation</span>
+      <div class="projFooter">
+        <span class="projTag">Batch Script · Automation</span>
+        <a href="https://github.com/vikas-singh" target="_blank" class="projLink">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
     </div>
     <div class="projCard reveal-r d2">
       <div class="projBg"></div>
       <div class="projNum">02</div>
       <div class="projTitle">Python Automation Suite</div>
       <div class="projDesc">PDF Filler Automation for auto-populating dynamic forms from structured data, and Web Automation Scripts for data extraction, report generation, and routine form submissions — eliminating repetitive manual work.</div>
-      <span class="projTag">Python · Web Automation</span>
+      <div class="projFooter">
+        <span class="projTag">Python · Web Automation</span>
+        <a href="https://github.com/vikas-singh" target="_blank" class="projLink">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+    <div class="projCard reveal-l d3">
+      <div class="projBg"></div>
+      <div class="projNum">03</div>
+      <div class="projTitle">IT Asset Tracker Dashboard</div>
+      <div class="projDesc">Power BI dashboard integrating ServiceNow asset data to provide real-time visibility into device lifecycle, warranty status, and assignment history — reducing manual reporting effort significantly.</div>
+      <div class="projFooter">
+        <span class="projTag">Power BI · ServiceNow</span>
+      </div>
+    </div>
+    <div class="projCard reveal-r d4">
+      <div class="projBg"></div>
+      <div class="projNum">04</div>
+      <div class="projTitle">Onboarding Automation Script</div>
+      <div class="projDesc">PowerShell script that automates new-joiner IT setup — account creation, software push via SCCM, email configuration, and provisioning checklist generation. Cut onboarding time from hours to minutes.</div>
+      <div class="projFooter">
+        <span class="projTag">PowerShell · SCCM</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CERTS -->
-<section id="certs" class="altBg">
+<section id="certs">
   <div class="sLabel reveal">Learning & Development</div>
   <h2 class="sTitle reveal d1">Certifications &amp; <em>Training</em></h2>
   <div class="certGrid">
@@ -350,171 +478,103 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="altBg">
   <div class="sLabel reveal">Let's Connect</div>
   <h2 class="sTitle reveal d1">Get In <em>Touch</em></h2>
   <div class="contactGrid">
     <div class="contactInfo">
-      <div class="cItem reveal d1"><div class="cIcon">📞</div><div><div class="cLbl">Phone</div><div class="cVal">+91 8130071282</div></div></div>
-      <div class="cItem reveal d2"><div class="cIcon">✉️</div><div><div class="cLbl">Email</div><div class="cVal">vikaskumarsingh333@gmail.com</div></div></div>
-      <div class="cItem reveal d3"><div class="cIcon">💼</div><div><div class="cLbl">LinkedIn</div><div class="cVal">linkedin.com/in/vikas-singh-816657ab</div></div></div>
-      <div class="cItem reveal d4"><div class="cIcon">📍</div><div><div class="cLbl">Location</div><div class="cVal">Gurgaon, India</div></div></div>
+      <a href="tel:+918130071282" class="cItem reveal d1"><div class="cIcon">📞</div><div><div class="cLbl">Phone</div><div class="cVal">+91 8130071282</div></div></a>
+      <a href="mailto:vikassingh.itpro@gmail.com" class="cItem reveal d2"><div class="cIcon">✉️</div><div><div class="cLbl">Email</div><div class="cVal">vikassingh.itpro@gmail.com</div></div></a>
+      <a href="https://linkedin.com/in/vikas-singh-816657ab" target="_blank" class="cItem reveal d3"><div class="cIcon">💼</div><div><div class="cLbl">LinkedIn</div><div class="cVal">linkedin.com/in/vikas-singh-816657ab</div></div></a>
+      <a href="https://github.com/vikas-singh" target="_blank" class="cItem reveal d4"><div class="cIcon">⚙️</div><div><div class="cLbl">GitHub</div><div class="cVal">github.com/vikas-singh</div></div></a>
+      <div class="cItem reveal d5"><div class="cIcon">📍</div><div><div class="cLbl">Location</div><div class="cVal">Gurgaon, India</div></div></div>
     </div>
     <div class="contactCard reveal-r">
       <h3>Open to New <span style="color:var(--cyan)">Opportunities</span></h3>
       <p>Looking for senior IT roles, endpoint management challenges, or automation-driven environments where I can make a real impact.</p>
-      <a href="mailto:vikaskumarsingh333@gmail.com" class="btnP"><span>Send a Message</span></a>
+      <a href="mailto:vikassingh.itpro@gmail.com" class="btnP"><span>Send a Message</span></a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="fName">Vikas Singh</div>
-  <div class="fCopy">IT Systems Specialist · Gurgaon, India · 2026</div>
+  <div class="fSocials">
+    <a href="https://linkedin.com/in/vikas-singh-816657ab" target="_blank" class="fSocial" title="LinkedIn">💼</a>
+    <a href="https://github.com/vikas-singh" target="_blank" class="fSocial" title="GitHub">⚙️</a>
+    <a href="mailto:vikassingh.itpro@gmail.com" class="fSocial" title="Email">✉️</a>
+  </div>
+  <div class="fCopy">IT Systems Specialist · Gurgaon · 2026</div>
 </footer>
 
 <script>
 // ── CURSOR ──
 const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-});
-(function loopCursor(){
-  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
-  curR.style.left=rx+'px';curR.style.top=ry+'px';
-  requestAnimationFrame(loopCursor);
-})();
-document.querySelectorAll('a,button,.skCard,.certCard,.projCard,.cItem,.achCard,.statC').forEach(el=>{
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loopCursor(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loopCursor)})();
+document.querySelectorAll('a,button,.skCard,.certCard,.projCard,.cItem,.achCard,.statC,.aboutStat').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';cur.style.background='var(--green)';curR.style.width='54px';curR.style.height='54px';curR.style.borderColor='rgba(0,255,179,.5)'});
   el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';cur.style.background='var(--cyan)';curR.style.width='38px';curR.style.height='38px';curR.style.borderColor='rgba(0,229,255,.35)'});
 });
 
+// ── HAMBURGER MENU ──
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open')});
+function closeMobile(){hamburger.classList.remove('open');mobileMenu.classList.remove('open')}
+
+// ── BACK TO TOP ──
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{backTop.classList.toggle('show',window.scrollY>400)});
+backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
 // ── SCROLL PROGRESS ──
 const prog=document.getElementById('prog');
-window.addEventListener('scroll',()=>{
-  const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
-  prog.style.width=pct+'%';
-});
+window.addEventListener('scroll',()=>{const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;prog.style.width=pct+'%'});
 
 // ── PARTICLE CANVAS ──
 const canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
 let W,H;
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
 resize();window.addEventListener('resize',resize);
-
 const particles=[];
 class P{
   constructor(){this.reset(true)}
-  reset(init){
-    this.x=Math.random()*W;
-    this.y=init?Math.random()*H:Math.random()*H;
-    this.vx=(Math.random()-.5)*.22;
-    this.vy=(Math.random()-.5)*.22;
-    this.r=Math.random()*1.3+.3;
-    this.alpha=0;this.targetAlpha=Math.random()*.45+.05;
-    this.color=Math.random()>.6?'0,229,255':Math.random()>.5?'124,58,237':'0,255,179';
-    this.life=0;this.maxLife=200+Math.random()*300;
-  }
-  update(){
-    this.x+=this.vx;this.y+=this.vy;this.life++;
-    if(this.life<30) this.alpha+=this.targetAlpha/30;
-    else if(this.life>this.maxLife-30) this.alpha-=this.targetAlpha/30;
-    if(this.life>=this.maxLife||this.x<-20||this.x>W+20||this.y<-20||this.y>H+20) this.reset();
-  }
-  draw(){
-    ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(${this.color},${Math.max(0,this.alpha)})`;ctx.fill();
-  }
+  reset(init){this.x=Math.random()*W;this.y=init?Math.random()*H:Math.random()*H;this.vx=(Math.random()-.5)*.22;this.vy=(Math.random()-.5)*.22;this.r=Math.random()*1.3+.3;this.alpha=0;this.targetAlpha=Math.random()*.45+.05;this.color=Math.random()>.6?'0,229,255':Math.random()>.5?'124,58,237':'0,255,179';this.life=0;this.maxLife=200+Math.random()*300}
+  update(){this.x+=this.vx;this.y+=this.vy;this.life++;if(this.life<30)this.alpha+=this.targetAlpha/30;else if(this.life>this.maxLife-30)this.alpha-=this.targetAlpha/30;if(this.life>=this.maxLife||this.x<-20||this.x>W+20||this.y<-20||this.y>H+20)this.reset()}
+  draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${Math.max(0,this.alpha)})`;ctx.fill()}
 }
-for(let i=0;i<100;i++) particles.push(new P());
-
-function drawLines(){
-  for(let i=0;i<particles.length;i++){
-    for(let j=i+1;j<particles.length;j++){
-      const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y;
-      const d=Math.sqrt(dx*dx+dy*dy);
-      if(d<110){
-        ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);
-        ctx.strokeStyle=`rgba(0,229,255,${(1-d/110)*.04})`;ctx.lineWidth=.4;ctx.stroke();
-      }
-    }
-  }
-}
-
-(function animCanvas(){
-  ctx.clearRect(0,0,W,H);
-  particles.forEach(p=>{p.update();p.draw()});
-  drawLines();
-  requestAnimationFrame(animCanvas);
-})();
+for(let i=0;i<100;i++)particles.push(new P());
+function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(0,229,255,${(1-d/110)*.04})`;ctx.lineWidth=.4;ctx.stroke()}}}}
+(function animCanvas(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw()});drawLines();requestAnimationFrame(animCanvas)})();
 
 // ── TYPEWRITER ──
 const phrases=['IT Systems Specialist','Desktop & Endpoint Engineer','SCCM · Intune · JAMF Expert','Python Automation Builder','ITIL 4 Certified Professional'];
 let pi=0,ci=0,del=false;
 const typedEl=document.getElementById('typed');
-function typeLoop(){
-  const phrase=phrases[pi];
-  if(!del){typedEl.textContent=phrase.substring(0,++ci);if(ci===phrase.length){del=true;setTimeout(typeLoop,2000);return}}
-  else{typedEl.textContent=phrase.substring(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(typeLoop,350);return}}
-  setTimeout(typeLoop,del?38:75);
-}
+function typeLoop(){const phrase=phrases[pi];if(!del){typedEl.textContent=phrase.substring(0,++ci);if(ci===phrase.length){del=true;setTimeout(typeLoop,2000);return}}else{typedEl.textContent=phrase.substring(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(typeLoop,350);return}}setTimeout(typeLoop,del?38:75)}
 setTimeout(typeLoop,1900);
 
 // ── COUNTER ──
-function animCount(el,target,suffix){
-  let start=null,dur=1600;
-  function step(ts){
-    if(!start) start=ts;
-    const p=Math.min((ts-start)/dur,1);
-    const ease=1-Math.pow(1-p,4);
-    el.textContent=Math.round(ease*target)+suffix;
-    if(p<1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-const statObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      animCount(e.target,+e.target.dataset.target,e.target.dataset.suffix||'');
-      statObs.unobserve(e.target);
-    }
-  });
-},{threshold:.5});
+function animCount(el,target,suffix){let start=null,dur=1600;function step(ts){if(!start)start=ts;const p=Math.min((ts-start)/dur,1),ease=1-Math.pow(1-p,4);el.textContent=Math.round(ease*target)+suffix;if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+const statObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animCount(e.target,+e.target.dataset.target,e.target.dataset.suffix||'');statObs.unobserve(e.target)}})},{threshold:.5});
 document.querySelectorAll('.statN[data-target]').forEach(el=>statObs.observe(el));
 
-// ── SCROLL REVEAL ──
-const revObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');revObs.unobserve(e.target)}});
-},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>revObs.observe(el));
+// ── SCROLL REVEAL + SKILL BAR TRIGGER ──
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');revObs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.skCard').forEach(el=>revObs.observe(el));
 
 // ── MOUSE GLOW ON SKILL CARDS ──
-document.querySelectorAll('.skCard').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
-    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
-  });
-});
+document.querySelectorAll('.skCard').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')})});
 
 // ── HERO PARALLAX ──
-window.addEventListener('scroll',()=>{
-  const y=window.scrollY;
-  const hi=document.querySelector('.heroInner');
-  if(hi) hi.style.transform=`translateY(${y*.1}px)`;
-});
+window.addEventListener('scroll',()=>{const y=window.scrollY,hi=document.querySelector('.heroInner');if(hi)hi.style.transform=`translateY(${y*.1}px)`});
 
 // ── TILT ON PROJECT CARDS ──
 document.querySelectorAll('.projCard').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`translateY(-8px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`;
-  });
-  card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`translateY(-8px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`});
+  card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.transition='all .5s'});
+  card.addEventListener('mouseenter',()=>{card.style.transition='transform .1s'});
 });
 </script>
 </body>
