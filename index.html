@@ -711,7 +711,7 @@ function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particl
 (function animCanvas(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw()});drawLines();requestAnimationFrame(animCanvas)})();
 
 // ── TYPEWRITER ──
-const phrases=['IT Systems Specialist','Desktop & Endpoint Engineer','SCCM · Intune · JAMF Expert','Python Automation Builder','ITIL 4 Certified Professional'];
+const phrases=['System Analyst','Endpoint & Workplace Management','SCCM · Intune · JAMF Expert','Python Automation Builder','ITIL 4 Certified Professional'];
 let pi=0,ci=0,del=false;
 const typedEl=document.getElementById('typed');
 function typeLoop(){const phrase=phrases[pi];if(!del){typedEl.textContent=phrase.substring(0,++ci);if(ci===phrase.length){del=true;setTimeout(typeLoop,2200);return}}else{typedEl.textContent=phrase.substring(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(typeLoop,400);return}}setTimeout(typeLoop,del?35:72)}
