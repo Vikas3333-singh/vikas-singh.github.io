@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vikas Singh | System Analyst</title>
+<title>Vikas Singh | System Analyst - Endpoint Management Expert</title>
+<meta name="description" content="8+ years enterprise IT experience | SCCM, Intune, JAMF, Python Automation | System Analyst at BCG | Gurgaon">
+<meta property="og:title" content="Vikas Singh | System Analyst">
+<meta property="og:description" content="Enterprise IT Specialist - Endpoint Management, Automation & ITSM">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.com">
+<meta property="og:image" content="https://yourdomain.com/og-image.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00d9f5">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -53,6 +61,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 64px;display:fl
 /* ── HAMBURGER ── */
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:110}
 .hamburger span{width:22px;height:1.5px;background:var(--cyan);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1);display:block}
+.skip-link{position:absolute;top:-40px;left:6px;background:var(--cyan);color:#03090f;padding:12px 24px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-decoration:none;border-radius:4px;transition:top .25s;z-index:200}
+.skip-link:focus{top:12px}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,217,245,.2)}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
@@ -253,7 +264,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
   .hero{grid-template-columns:1fr;gap:0}
-  .heroStats{display:none}
+  .heroStats{display:flex;flex-direction:row;justify-content:center;gap:12px;padding:24px 0;opacity:0;animation:fadeUp .8s 2s ease forwards;flex-wrap:wrap}
+  .heroStats .statBox{min-width:90px;padding:16px 20px}
+  .heroStats .statN{font-size:1.6rem}
 }
 @media(max-width:900px){
   nav{padding:14px 24px}
@@ -271,6 +284,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 </style>
 </head>
 <body>
+<a href="#about" class="skip-link">Skip to main content</a>
 
 <div id="cur"></div>
 <div id="curR"></div>
@@ -305,7 +319,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
   </ul>
   <div style="display:flex;align-items:center;gap:14px">
     <a href="#contact" class="nCTA">Hire Me</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -323,7 +337,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <span class="typeLabel">Role</span>
       <span id="typed"></span><span class="cursor-type"></span>
     </div>
-    <p class="heroDesc">8+ years of enterprise IT expertise — endpoint management, automation, and infrastructure. Currently powering IT operations at <strong>Femmella fashion</strong>, Gurgaon.</p>
+    <p class="heroDesc">8+ years of enterprise IT expertise — endpoint management, automation, and infrastructure. Currently powering IT operations at <strong>Femmella Fashions India Limited</strong>, Gurgaon.</p>
     <div class="heroActions">
       <a href="#experience" class="btnP"><span>View Experience</span></a>
       <a href="#contact" class="btnO">Get In Touch</a>
@@ -353,8 +367,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
   <h2 class="sTitle reveal d1">A Little <em>About Me</em></h2>
   <div class="aboutGrid">
     <div class="aboutText reveal-l">
-      <p>I'm <strong>Vikas Singh</strong>, an System Analyst with <strong>8+ years</strong> of enterprise experience based in Gurgaon, India. I specialize in endpoint management, device lifecycle, and IT automation across large-scale enterprise environments.</p>
-      <p>At <strong>Femmella fashions</strong>, I manage IT operations for 500+ staff — from seamless device deployment via SCCM &amp; JAMF to AV operations for high-impact global events, with zero downtime.</p>
+      <p>I'm <strong>Vikas Singh</strong>, a Senior IT Executive with <strong>8+ years</strong> of enterprise experience based in Gurgaon, India. I specialize in endpoint management, device lifecycle, and IT automation across large-scale enterprise environments.</p>
+      <p>At <strong>Femmella Fashions India Limited</strong>, I manage IT operations for 500+ staff — from seamless device deployment via SCCM &amp; JAMF to AV operations for high-impact global events, with zero downtime.</p>
       <p>Beyond the day job, I build automation tools in Python and Batch to eliminate repetitive work, and stay current with certifications in ITIL 4, AI, and cybersecurity.</p>
       <div class="aboutPills">
         <span class="pill">SCCM</span>
@@ -455,41 +469,56 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
   <div class="expWrap">
     <div class="expItem reveal">
       <div class="expDot"></div>
-      <div class="expDate">August 2022 - January 2026</div>
-      <div class="expRole">System Analyst</div>
-      <div class="expCo">Boston Consulting Group (BCG) · Gurgaon, India</div>
+      <div class="expDate">Jan 2026 – Present</div>
+      <div class="expRole">Senior IT Executive</div>
+      <div class="expCo">Femmella Fashions India Limited · India</div>
       <ul class="expPts">
-        <li>Streamlined employee onboarding using UMRA, ServiceNow, and IDM — secure, automated account provisioning with reduced turnaround time.</li>
-        <li>Deployed and managed Windows, macOS, laptops and mobile via SCCM, Intune, JAMF, and Autopilot — driving security compliance and seamless device experience.</li>
-        <li>Delivered L1/L2 support to 500+ staff, resolving complex technical issues across devices, AV systems, and communication tools with high SLA adherence.</li>
-        <li>Reduced escalation rates by <strong>30%</strong> by streamlining L1 resolution workflows, boosting team productivity and customer satisfaction.</li>
-        <li>Created SOPs and knowledge base; leveraged Excel and Power BI dashboards to improve IT workflows and asset lifecycle tracking.</li>
-        <li>Ensured zero-downtime AV/IT operations during critical BCG high-impact events and hybrid collaboration programs.</li>
+        <li><strong>IT Support Management:</strong> Efficiently handle and resolve tickets through <strong>ServiceNow</strong>, providing timely technical support to office staff and remote users.</li>
+        <li><strong>System Deployment &amp; Configuration:</strong> Prepare, image, and configure desktops and laptops using <strong>SCCM</strong>, <strong>PXE</strong>, and <strong>Windows Autopilot</strong> for new joiners.</li>
+        <li><strong>Office IT Infrastructure Maintenance:</strong> Monitor and maintain <strong>AV meeting rooms</strong>, printers, copiers, <strong>Cisco phones</strong>, and workstation setups to ensure seamless operations.</li>
+        <li><strong>Software &amp; Collaboration Tools Support:</strong> Install, troubleshoot, and manage <strong>Microsoft Office Suite (Office 365)</strong>, <strong>Cisco Jabber</strong>, and other collaboration tools.</li>
+        <li><strong>Asset &amp; Vendor Coordination:</strong> Maintain IT inventory, manage e-waste, and coordinate with vendors for networking devices, AV systems, and peripherals.</li>
+        <li><strong>Event &amp; Process Support:</strong> Provide technical assistance for office events, programs, and conferences while ensuring smooth communication and system functionality.</li>
       </ul>
     </div>
     <div class="expItem reveal d2">
       <div class="expDot"></div>
-      <div class="expDate">March 2018 — August 2022</div>
-      <div class="expRole">Desktop Support Engineer</div>
-      <div class="expCo">Puthur Infotech Pvt. Ltd. (Client: Controller of Communicates) · Patna, Bihar</div>
+      <div class="expDate">Aug 2022 – Jan 2026</div>
+      <div class="expRole">System Analyst</div>
+      <div class="expCo">Boston Consulting Group (BCG) | Gurgaon, India</div>
       <ul class="expPts">
-        <li>Installed, configured, and upgraded Windows OS (7, 8, 10) across the organization ensuring minimal downtime.</li>
-        <li>Provided end-to-end hardware, software, and network support via ServiceNow and direct user assistance.</li>
-        <li>Led company-wide OS upgrade projects; streamlined repair processes and updated SOPs for consistent IT support.</li>
-        <li>Maintained inventory of <strong>150+ devices</strong> — accurate records, timely replacements, and proper backup procedures.</li>
-        <li>Implemented encryption, firewalls, patch management, and antivirus monitoring to safeguard IT infrastructure.</li>
+        <li><strong>End-to-End Onboarding &amp; Access Management:</strong> Streamlined employee onboarding using <strong>ServiceNow</strong>, <strong>UMRA</strong>, and <strong>IDM</strong>, ensuring secure and systematized account provisioning with minimal turnaround time.</li>
+        <li><strong>Enterprise Endpoint &amp; Device Management:</strong> Deployed and managed Windows, macOS, and mobile devices via <strong>SCCM</strong>, <strong>Intune</strong>, <strong>JAMF</strong>, and <strong>Autopilot</strong>, driving compliance, security, and seamless user experience.</li>
+        <li><strong>IT Support &amp; User Experience Excellence:</strong> Offered L1/L2 support to <strong>500+ staff</strong>, resolving complex technical issues across devices, AV systems, and communication tools, while maintaining high customer satisfaction.</li>
+        <li><strong>Infrastructure Monitoring &amp; Security Compliance:</strong> Proactively monitored networks with <strong>Cisco DNA Center</strong>, implemented patch management via <strong>Intune/SCCM</strong>, and collaborated with InfoSec to enforce security policies and compliance.</li>
+        <li><strong>Documentation &amp; Continuous Improvement:</strong> Created a knowledge base, SOPs, and IT documentation while leveraging dashboards (<strong>Excel</strong>, <strong>Power BI</strong>, <strong>Azure</strong>) to improve IT workflows, asset lifecycle tracking, and decision-making.</li>
       </ul>
     </div>
     <div class="expItem reveal d3">
       <div class="expDot"></div>
-      <div class="expDate">January 2015 — March 2018</div>
-      <div class="expRole">Technical Support Engineer</div>
-      <div class="expCo">Atlanta System Pvt. Ltd. (Client: Rural Electrification Corporation) · New Delhi, India</div>
+      <div class="expDate">Mar 2018 – Aug 2022</div>
+      <div class="expRole">Desktop Support Engineer L1 &amp; L2</div>
+      <div class="expCo">Puthur Infotech Pvt. Ltd. | Patna, Bihar</div>
       <ul class="expPts">
-        <li>Delivered end-to-end hardware, software, and network support across office locations and remote branches.</li>
-        <li>Managed installation, configuration, and maintenance of desktops, laptops, and OS (Windows, Ubuntu) for new joiners.</li>
-        <li>Configured and supported email clients (Outlook, Thunderbird) and collaboration tools for communication efficiency.</li>
-        <li>Installed, configured, and troubleshot printers, scanners, LAN networks, and VPN connectivity.</li>
+        <li><strong>Desktop &amp; Application Support:</strong> Provide 1st and 2nd level support to end-users, troubleshooting hardware, software, and application-related issues for seamless operations.</li>
+        <li><strong>Ticketing &amp; Incident Management:</strong> Efficiently manage and resolve IT requests using ticketing tools like <strong>ServiceNow</strong> and <strong>BMC Remedy</strong>, ensuring timely resolution and end-user satisfaction.</li>
+        <li><strong>System Deployment &amp; OS Upgrades:</strong> Lead company-wide <strong>Windows OS upgrade projects</strong>, imaging and configuring <strong>180+ devices</strong>, and training teams to meet tight deadlines.</li>
+        <li><strong>Network &amp; Connectivity Management:</strong> Install, configure, and troubleshoot network setups (<strong>LAN</strong>, <strong>TCP/IP</strong>), <strong>VPNS</strong>, and remote connectivity tools such as <strong>Cisco VPN</strong> and <strong>Outlook clients</strong>.</li>
+        <li><strong>IT Asset &amp; Inventory Management:</strong> Maintain accurate inventory of desktop hardware and software, manage backups, and oversee IT assets to ensure operational efficiency.</li>
+        <li><strong>Security &amp; Data Management:</strong> Implement antivirus solutions, remove malware/ransomware, monitor endpoint security, and perform regular data and mail backup for risk mitigation.</li>
+      </ul>
+    </div>
+    <div class="expItem reveal d4">
+      <div class="expDot"></div>
+      <div class="expDate">May 2016 – Mar 2018</div>
+      <div class="expRole">Technical Support Engineer</div>
+      <div class="expCo">Atlanta System Pvt. Ltd. | New Delhi, India<br/>Client: Rural Electrification Corporation</div>
+      <ul class="expPts">
+        <li><strong>IT Support &amp; Troubleshooting:</strong> Deliver end-to-end hardware, software, and network support across office locations and remote branches, ensuring minimal downtime.</li>
+        <li><strong>System Deployment &amp; Configuration:</strong> Manage installation, configuration, and maintenance of desktops, laptops, and operating systems (<strong>Windows</strong>, <strong>Ubuntu</strong>) for new joiners and replacement cases.</li>
+        <li><strong>Email &amp; Collaboration Management:</strong> Configure and support email clients (<strong>Outlook</strong>, <strong>Thunderbird</strong>) and collaboration tools to enhance communication efficiency.</li>
+        <li><strong>Peripheral &amp; Network Administration:</strong> Install, configure, and troubleshoot printers, scanners, <strong>LAN networks</strong>, and <strong>VPN connectivity</strong> for seamless operations.</li>
+        <li><strong>Security &amp; Backup Management:</strong> Implement antivirus solutions, handle system backups, and manage asset replacement to safeguard data and IT infrastructure.</li>
       </ul>
     </div>
   </div>
@@ -643,9 +672,18 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       </div>
     </div>
     <div class="contactCard reveal-r">
-      <h3>Open to New <span>Opportunities</span></h3>
-      <p>Looking for senior IT roles, endpoint management challenges, or automation-driven environments where I can make a real impact.</p>
-      <a href="mailto:vikaskumarsingh333@gmail.com" class="btnP"><span>Send a Message</span></a>
+      <h3>Get In <span>Touch</span></h3>
+      <p>Send a message. I'll respond within 24 hours.</p>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+        <input type="hidden" name="form-name" value="contact" />
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <input type="text" name="name" placeholder="Your Name" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem">
+          <input type="email" name="email" placeholder="your@email.com" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem">
+          <textarea name="message" placeholder="Your Message" rows="4" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem;resize:vertical;font-family:inherit"></textarea>
+          <button type="submit" class="btnP" style="width:100%"><span>Send Message</span></button>
+        </div>
+        <p style="font-size:.7rem;color:var(--muted);margin-top:12px;text-align:center">Protected by Netlify. Deploy to Netlify for instant backend.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -653,7 +691,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 <footer>
   <div class="fLeft">
     <div class="fName">Vikas Singh</div>
-    <div class="fSub">System Analyst · Gurgaon</div>
+    <div class="fSub">Senior IT Excutive· Gurgaon</div>
   </div>
   <div class="fSocials">
     <a href="https://linkedin.com/in/vikas-singh-816657ab" target="_blank" class="fSocial" title="LinkedIn">
@@ -666,7 +704,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </a>
   </div>
-  <div class="fCopy">© 2026 · All rights reserved</div>
+© 2024 Vikas Singh · All rights reserved
 </footer>
 
 <script>
@@ -694,21 +732,14 @@ backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}))
 const prog=document.getElementById('prog');
 window.addEventListener('scroll',()=>{const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;prog.style.width=pct+'%'});
 
-// ── PARTICLE CANVAS ──
+// ── LAZY PARTICLE CANVAS ──
 const canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
-let W,H;
+let W,H,particles=[],animId,canvasInited=false;
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
-resize();window.addEventListener('resize',resize);
-const particles=[];
-class P{
-  constructor(){this.reset(true)}
-  reset(init){this.x=Math.random()*W;this.y=init?Math.random()*H:H+10;this.vx=(Math.random()-.5)*.18;this.vy=(Math.random()-.5)*.18;this.r=Math.random()*1.1+.2;this.alpha=0;this.targetAlpha=Math.random()*.35+.04;this.color=Math.random()>.65?'0,217,245':Math.random()>.5?'124,58,237':'0,232,162';this.life=0;this.maxLife=250+Math.random()*350}
-  update(){this.x+=this.vx;this.y+=this.vy;this.life++;if(this.life<40)this.alpha+=this.targetAlpha/40;else if(this.life>this.maxLife-40)this.alpha-=this.targetAlpha/40;if(this.life>=this.maxLife||this.x<-10||this.x>W+10||this.y<-10||this.y>H+10)this.reset()}
-  draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${Math.max(0,this.alpha)})`;ctx.fill()}
-}
-for(let i=0;i<90;i++)particles.push(new P());
+function initCanvas(){if(canvasInited)return;resize();window.addEventListener('resize',resize);class P{constructor(){this.reset(true)}reset(init){this.x=Math.random()*W;this.y=init?Math.random()*H:H+10;this.vx=(Math.random()-.5)*.18;this.vy=(Math.random()-.5)*.18;this.r=Math.random()*1.1+.2;this.alpha=0;this.targetAlpha=Math.random()*.35+.04;this.color=Math.random()>.65?'0,217,245':Math.random()>.5?'124,58,237':'0,232,162';this.life=0;this.maxLife=250+Math.random()*350}update(){this.x+=this.vx;this.y+=this.vy;this.life++;if(this.life<40)this.alpha+=this.targetAlpha/40;else if(this.life>this.maxLife-40)this.alpha-=this.targetAlpha/40;if(this.life>=this.maxLife||this.x<-10||this.x>W+10||this.y<-10||this.y>H+10)this.reset()}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${Math.max(0,this.alpha)})`;ctx.fill()}}for(let i=0;i<90;i++)particles.push(new P());canvasInited=true}
 function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(0,217,245,${(1-d/100)*.03})`;ctx.lineWidth=.4;ctx.stroke()}}}}
-(function animCanvas(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw()});drawLines();requestAnimationFrame(animCanvas)})();
+function animCanvas(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw()});drawLines();animId=requestAnimationFrame(animCanvas)}
+const canvasObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){initCanvas();animCanvas();canvasObs.unobserve(canvas)}}, {threshold:0.1});canvasObs.observe(canvas);
 
 // ── TYPEWRITER ──
 const phrases=['System Analyst','Endpoint & Workplace Management','SCCM · Intune · JAMF Expert','Python Automation Builder','ITIL 4 Certified Professional'];
