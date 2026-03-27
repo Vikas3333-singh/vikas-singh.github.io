@@ -11,7 +11,10 @@
 <meta property="og:url" content="https://yourdomain.com">
 <meta property="og:image" content="https://yourdomain.com/og-image.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/three@0.167.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.167.0/examples/js/controls/OrbitControls.js"></script>
 <link rel="manifest" href="manifest.json">
+
 <meta name="theme-color" content="#00d9f5">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -33,14 +36,19 @@
   --shadow:0 24px 64px rgba(0,0,0,.5);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;line-height:1.6}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;line-height:1.6;perspective:1000px;}
+
 
 /* ── CURSOR ── */
 #cur{width:8px;height:8px;background:var(--cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width .18s,height .18s,background .18s}
 #curR{width:34px;height:34px;border:1px solid rgba(0,217,245,.3);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .22s,height .22s,border-color .22s}
 
 /* ── BG CANVAS ── */
-#bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7}
+#bgCanvas{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.4}
+
+
+
+
 
 /* ── SCROLL PROGRESS ── */
 #prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--green));z-index:300;width:0%;transition:width .05s linear}
@@ -290,6 +298,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 <div id="curR"></div>
 <div id="prog"></div>
 <canvas id="bgCanvas"></canvas>
+
+
 <div id="backTop" title="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></div>
 
 <div class="orb" style="width:500px;height:500px;background:rgba(0,217,245,.018);top:5%;left:-5%;animation-duration:20s"></div>
@@ -337,7 +347,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <span class="typeLabel">Role</span>
       <span id="typed"></span><span class="cursor-type"></span>
     </div>
-    <p class="heroDesc">8+ years of enterprise IT expertise — endpoint management, automation, and infrastructure. Currently powering IT operations at <strong>Femmella Fashions India Limited</strong>, Gurgaon.</p>
+    <p class="heroDesc">8+ years of enterprise IT expertise — endpoint management, automation, and infrastructure. Currently powering IT operations at <strong>Femmella fashion</strong>, Gurgaon.</p>
     <div class="heroActions">
       <a href="#experience" class="btnP"><span>View Experience</span></a>
       <a href="#contact" class="btnO">Get In Touch</a>
@@ -367,8 +377,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
   <h2 class="sTitle reveal d1">A Little <em>About Me</em></h2>
   <div class="aboutGrid">
     <div class="aboutText reveal-l">
-      <p>I'm <strong>Vikas Singh</strong>, a Senior IT Executive with <strong>8+ years</strong> of enterprise experience based in Gurgaon, India. I specialize in endpoint management, device lifecycle, and IT automation across large-scale enterprise environments.</p>
-      <p>At <strong>Femmella Fashions India Limited</strong>, I manage IT operations for 500+ staff — from seamless device deployment via SCCM &amp; JAMF to AV operations for high-impact global events, with zero downtime.</p>
+      <p>I'm <strong>Vikas Singh</strong>, an System Analyst with <strong>8+ years</strong> of enterprise experience based in Gurgaon, India. I specialize in endpoint management, device lifecycle, and IT automation across large-scale enterprise environments.</p>
+      <p>At <strong>Femmella fashions</strong>, I manage IT operations for 500+ staff — from seamless device deployment via SCCM &amp; JAMF to AV operations for high-impact global events, with zero downtime.</p>
       <p>Beyond the day job, I build automation tools in Python and Batch to eliminate repetitive work, and stay current with certifications in ITIL 4, AI, and cybersecurity.</p>
       <div class="aboutPills">
         <span class="pill">SCCM</span>
@@ -408,7 +418,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 <section id="skills">
   <div class="sLabel reveal">Core Competencies</div>
   <h2 class="sTitle reveal d1">Technical <em>Skills</em></h2>
+  <div id="skills3DContainer" style="position:relative;height:400px;margin:40px 0;display:flex;align-items:center;justify-content:center;"></div>
   <div class="skGrid">
+
     <div class="skCard reveal d1">
       <div class="skIcon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg></div>
       <div class="skName">OS Administration</div>
@@ -466,61 +478,57 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 <section id="experience" class="altBg">
   <div class="sLabel reveal">Career Journey</div>
   <h2 class="sTitle reveal d1">Work <em>Experience</em></h2>
-  <div class="expWrap">
-    <div class="expItem reveal">
-      <div class="expDot"></div>
-      <div class="expDate">Jan 2026 – Present</div>
-      <div class="expRole">Senior IT Executive</div>
-      <div class="expCo">Femmella Fashions India Limited · India</div>
-      <ul class="expPts">
-        <li><strong>IT Support Management:</strong> Efficiently handle and resolve tickets through <strong>ServiceNow</strong>, providing timely technical support to office staff and remote users.</li>
-        <li><strong>System Deployment &amp; Configuration:</strong> Prepare, image, and configure desktops and laptops using <strong>SCCM</strong>, <strong>PXE</strong>, and <strong>Windows Autopilot</strong> for new joiners.</li>
-        <li><strong>Office IT Infrastructure Maintenance:</strong> Monitor and maintain <strong>AV meeting rooms</strong>, printers, copiers, <strong>Cisco phones</strong>, and workstation setups to ensure seamless operations.</li>
-        <li><strong>Software &amp; Collaboration Tools Support:</strong> Install, troubleshoot, and manage <strong>Microsoft Office Suite (Office 365)</strong>, <strong>Cisco Jabber</strong>, and other collaboration tools.</li>
-        <li><strong>Asset &amp; Vendor Coordination:</strong> Maintain IT inventory, manage e-waste, and coordinate with vendors for networking devices, AV systems, and peripherals.</li>
-        <li><strong>Event &amp; Process Support:</strong> Provide technical assistance for office events, programs, and conferences while ensuring smooth communication and system functionality.</li>
-      </ul>
-    </div>
-    <div class="expItem reveal d2">
-      <div class="expDot"></div>
-      <div class="expDate">Aug 2022 – Jan 2026</div>
-      <div class="expRole">System Analyst</div>
-      <div class="expCo">Boston Consulting Group (BCG) | Gurgaon, India</div>
-      <ul class="expPts">
-        <li><strong>End-to-End Onboarding &amp; Access Management:</strong> Streamlined employee onboarding using <strong>ServiceNow</strong>, <strong>UMRA</strong>, and <strong>IDM</strong>, ensuring secure and systematized account provisioning with minimal turnaround time.</li>
-        <li><strong>Enterprise Endpoint &amp; Device Management:</strong> Deployed and managed Windows, macOS, and mobile devices via <strong>SCCM</strong>, <strong>Intune</strong>, <strong>JAMF</strong>, and <strong>Autopilot</strong>, driving compliance, security, and seamless user experience.</li>
-        <li><strong>IT Support &amp; User Experience Excellence:</strong> Offered L1/L2 support to <strong>500+ staff</strong>, resolving complex technical issues across devices, AV systems, and communication tools, while maintaining high customer satisfaction.</li>
-        <li><strong>Infrastructure Monitoring &amp; Security Compliance:</strong> Proactively monitored networks with <strong>Cisco DNA Center</strong>, implemented patch management via <strong>Intune/SCCM</strong>, and collaborated with InfoSec to enforce security policies and compliance.</li>
-        <li><strong>Documentation &amp; Continuous Improvement:</strong> Created a knowledge base, SOPs, and IT documentation while leveraging dashboards (<strong>Excel</strong>, <strong>Power BI</strong>, <strong>Azure</strong>) to improve IT workflows, asset lifecycle tracking, and decision-making.</li>
-      </ul>
-    </div>
-    <div class="expItem reveal d3">
-      <div class="expDot"></div>
-      <div class="expDate">Mar 2018 – Aug 2022</div>
-      <div class="expRole">Desktop Support Engineer L1 &amp; L2</div>
-      <div class="expCo">Puthur Infotech Pvt. Ltd. | Patna, Bihar</div>
-      <ul class="expPts">
-        <li><strong>Desktop &amp; Application Support:</strong> Provide 1st and 2nd level support to end-users, troubleshooting hardware, software, and application-related issues for seamless operations.</li>
-        <li><strong>Ticketing &amp; Incident Management:</strong> Efficiently manage and resolve IT requests using ticketing tools like <strong>ServiceNow</strong> and <strong>BMC Remedy</strong>, ensuring timely resolution and end-user satisfaction.</li>
-        <li><strong>System Deployment &amp; OS Upgrades:</strong> Lead company-wide <strong>Windows OS upgrade projects</strong>, imaging and configuring <strong>180+ devices</strong>, and training teams to meet tight deadlines.</li>
-        <li><strong>Network &amp; Connectivity Management:</strong> Install, configure, and troubleshoot network setups (<strong>LAN</strong>, <strong>TCP/IP</strong>), <strong>VPNS</strong>, and remote connectivity tools such as <strong>Cisco VPN</strong> and <strong>Outlook clients</strong>.</li>
-        <li><strong>IT Asset &amp; Inventory Management:</strong> Maintain accurate inventory of desktop hardware and software, manage backups, and oversee IT assets to ensure operational efficiency.</li>
-        <li><strong>Security &amp; Data Management:</strong> Implement antivirus solutions, remove malware/ransomware, monitor endpoint security, and perform regular data and mail backup for risk mitigation.</li>
-      </ul>
-    </div>
-    <div class="expItem reveal d4">
-      <div class="expDot"></div>
-      <div class="expDate">May 2016 – Mar 2018</div>
-      <div class="expRole">Technical Support Engineer</div>
-      <div class="expCo">Atlanta System Pvt. Ltd. | New Delhi, India<br/>Client: Rural Electrification Corporation</div>
-      <ul class="expPts">
-        <li><strong>IT Support &amp; Troubleshooting:</strong> Deliver end-to-end hardware, software, and network support across office locations and remote branches, ensuring minimal downtime.</li>
-        <li><strong>System Deployment &amp; Configuration:</strong> Manage installation, configuration, and maintenance of desktops, laptops, and operating systems (<strong>Windows</strong>, <strong>Ubuntu</strong>) for new joiners and replacement cases.</li>
-        <li><strong>Email &amp; Collaboration Management:</strong> Configure and support email clients (<strong>Outlook</strong>, <strong>Thunderbird</strong>) and collaboration tools to enhance communication efficiency.</li>
-        <li><strong>Peripheral &amp; Network Administration:</strong> Install, configure, and troubleshoot printers, scanners, <strong>LAN networks</strong>, and <strong>VPN connectivity</strong> for seamless operations.</li>
-        <li><strong>Security &amp; Backup Management:</strong> Implement antivirus solutions, handle system backups, and manage asset replacement to safeguard data and IT infrastructure.</li>
-      </ul>
-    </div>
+    <div class="expWrap">
+      <div class="expItem reveal d1">
+        <div class="expDot"></div>
+        <div class="expDate">Jan 2026 – Present</div>
+        <div class="expRole">IT Systems Specialist</div>
+        <div class="expCo">Femmella Fashions India Limited · Gurgaon, India</div>
+        <ul class="expPts">
+          <li>Provide expert-level technical support and troubleshooting for 300+ users, resolving complex hardware, software, and network issues via ServiceNow with <strong>95%</strong> first-contact resolution rate.</li>
+          <li>Deploy and configure desktops, laptops, and mobile devices using SCCM, PXE boot, and Windows Autopilot, reducing setup time from 4 hours to <strong>45 minutes</strong> per device.</li>
+          <li>Set up and maintain IT infrastructure including AV meeting rooms, Cisco VoIP phones, printers, and network equipment ensuring <strong>99.5%</strong> uptime.</li>
+          <li>Install, configure, and troubleshoot Microsoft Office 365, collaboration tools (Teams, Jabber), and business applications across Windows and macOS platforms.</li>
+          <li>Oversee IT asset lifecycle and inventory management maintaining <strong>98%</strong> accuracy through systematic tracking and vendor coordination.</li>
+        </ul>
+      </div>
+      <div class="expItem reveal d2">
+        <div class="expDot"></div>
+        <div class="expDate">Aug 2022 – Jan 2026</div>
+        <div class="expRole">System Administrator / Technical Support Specialist</div>
+        <div class="expCo">Konverge Technology Pvt Ltd (Client: Boston Consulting Group) · Gurgaon, India</div>
+        <ul class="expPts">
+          <li>Streamlined new employee onboarding and system provisioning using ServiceNow, UMRA, and IDM, reducing setup time by <strong>40%</strong> (<strong>6hrs → 3.5hrs</strong>) while ensuring secure access management.</li>
+          <li>Deployed, configured, and supervised 500+ Windows, macOS, and mobile devices using SCCM, Intune, JAMF, and Autopilot maintaining <strong>97%</strong> patch compliance and <strong>99.2%</strong> uptime.</li>
+          <li>Delivered L1/L2 technical support resolving complex hardware, software, networking, and application issues with <strong>92%</strong> SLA adherence and high customer satisfaction ratings.</li>
+          <li>Reduced IT escalation rates by <strong>30%</strong> by implementing self-service troubleshooting resources and optimizing L1 resolution workflows.</li>
+          <li>Organized and sustained enterprise infrastructure including Active Directory, Group Policy, Windows Update management, and network monitoring via Cisco DNA Centre.</li>
+          <li>Directed AV systems and IT infrastructure for 20+ high-impact conferences and events with zero downtime, supporting hybrid meetings and collaboration platforms.</li>
+        </ul>
+      </div>
+      <div class="expItem reveal d3">
+        <div class="expDot"></div>
+        <div class="expDate">Mar 2018 – Aug 2022</div>
+        <div class="expRole">Desktop Support Engineer (L1 & L2)</div>
+        <div class="expCo">Puthur Infotech Pvt. Ltd. · Patna, Bihar</div>
+        <ul class="expPts">
+          <li>Led company-wide Windows 7 to Windows 10 migration project, deploying and configuring 180+ systems using SCCM imaging and PXE boot under tight 6-week deadline.</li>
+          <li>Provided 1st and 2nd level technical support troubleshooting hardware failures, software conflicts, network connectivity, and application issues across diverse user base.</li>
+          <li>Trained L1 support teams on system deployment, OS troubleshooting, and hardware diagnostics, improving first-call resolution rate by <strong>22%</strong>.</li>
+          <li>Coordinated IT asset inventory and lifecycle (200+ devices) preserving <strong>96%</strong> accuracy through systematic tracking, backup management, and security implementations.</li>
+        </ul>
+      </div>
+      <div class="expItem reveal d4">
+        <div class="expDot"></div>
+        <div class="expDate">May 2016 – Mar 2018</div>
+        <div class="expRole">Technical Support Engineer</div>
+        <div class="expCo">Atlanta System Pvt. Ltd. (Client: Rural Electrification Corporation) · New Delhi, India</div>
+        <ul class="expPts">
+          <li>Delivered comprehensive L1/L2 technical support for hardware, software, and network issues across headquarters and 15+ remote branches with <4hr SLA response time.</li>
+          <li>Arranged and troubleshot email systems (Outlook, Thunderbird), LAN/WAN networks, VPN connectivity, printers, scanners, and peripheral devices.</li>
+          <li>Implemented antivirus solutions, handled system backups, and coordinated asset replacement ensuring data security and infrastructure reliability.</li>
+        </ul>
+      </div>
   </div>
 </section>
 
@@ -568,7 +576,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projDesc">A lightweight (&lt;100 KB) .bat automation tool with interactive prompt-driven workflows. Implements self-resolution diagnostics guiding end-users through system issue identification — reducing ticket volume and IT support burden.</div>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">Batch</span><span class="projTag">Automation</span></div>
-        <a href="https://github.com/vikas-singh" target="_blank" class="projLink">
+        <a href="https://github.com/Vikas3333-singh" target="_blank" class="projLink">
           <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           GitHub
         </a>
@@ -662,9 +670,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
         <div class="cIconWrap"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
         <div><div class="cLbl">LinkedIn</div><div class="cVal">linkedin.com/in/vikas-singh-816657ab</div></div>
       </a>
-      <a href="https://github.com/vikas-singh" target="_blank" class="cItem reveal d4">
+        <a href="https://github.com/Vikas3333-singh" target="_blank" class="cItem reveal d4">
         <div class="cIconWrap"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-        <div><div class="cLbl">GitHub</div><div class="cVal">https://github.com/Vikas3333-singh</div></div>
+        <div><div class="cLbl">GitHub</div><div class="cVal">github.com/Vikas3333-singh</div></div>
       </a>
       <div class="cItem reveal d5">
         <div class="cIconWrap"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -691,7 +699,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 <footer>
   <div class="fLeft">
     <div class="fName">Vikas Singh</div>
-    <div class="fSub">Senior IT Excutive· Gurgaon</div>
+    <div class="fSub">System Analyst · Gurgaon</div>
   </div>
   <div class="fSocials">
     <a href="https://linkedin.com/in/vikas-singh-816657ab" target="_blank" class="fSocial" title="LinkedIn">
@@ -732,7 +740,8 @@ backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}))
 const prog=document.getElementById('prog');
 window.addEventListener('scroll',()=>{const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;prog.style.width=pct+'%'});
 
-// ── LAZY PARTICLE CANVAS ──
+// ── LAZY PARTICLE CANVAS ── (kept as is)
+
 const canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
 let W,H,particles=[],animId,canvasInited=false;
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
@@ -740,6 +749,7 @@ function initCanvas(){if(canvasInited)return;resize();window.addEventListener('r
 function drawLines(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(0,217,245,${(1-d/100)*.03})`;ctx.lineWidth=.4;ctx.stroke()}}}}
 function animCanvas(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw()});drawLines();animId=requestAnimationFrame(animCanvas)}
 const canvasObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){initCanvas();animCanvas();canvasObs.unobserve(canvas)}}, {threshold:0.1});canvasObs.observe(canvas);
+
 
 // ── TYPEWRITER ──
 const phrases=['System Analyst','Endpoint & Workplace Management','SCCM · Intune · JAMF Expert','Python Automation Builder','ITIL 4 Certified Professional'];
@@ -755,7 +765,8 @@ document.querySelectorAll('.statN[data-target]').forEach(el=>statObs.observe(el)
 
 // ── SCROLL REVEAL ──
 const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');revObs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.skCard').forEach(el=>revObs.observe(el));
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.skCard,#skills3DContainer').forEach(el=>revObs.observe(el));
+
 
 // ── MOUSE GLOW ON SKILL CARDS ──
 document.querySelectorAll('.skCard').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')})});
