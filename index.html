@@ -164,11 +164,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 64px;display:fl
 .btnO:hover{border-color:rgba(0,217,245,.4);color:var(--cyan);transform:translateY(-2px)}
 
 /* ══════════════════════════════════════
-   HERO RIGHT — AVATAR + RIPPLE RINGS
-   (replaces old heroStats vertical column)
+   HERO RIGHT — 3D CARD + STATS GRID
 ══════════════════════════════════════ */
 .heroRight{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
   opacity:0;animation:fadeUp .8s 1.8s ease forwards;
 }
 
@@ -267,8 +266,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 64px;display:fl
   letter-spacing:.04em;
 }
 
-/* HERO STATS (below avatar) */
-.heroStats{display:flex;flex-direction:column;gap:12px;}
+/* HERO STATS (below card, horizontal grid) */
+.heroStats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:200px;}
 .statBox{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:18px 22px;text-align:center;min-width:120px;position:relative;overflow:hidden;transition:all .3s}
 .statBox:hover{border-color:rgba(0,217,245,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.35)}
 .statBox::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .3s}
@@ -535,6 +534,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
   .contactRippleWrap{display:none}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 <a href="#about" class="skip-link">Skip to main content</a>
@@ -605,7 +605,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
     </div>
   </div>
 
-  <!-- RIGHT: 3D card + avatar ripple + stats -->
+  <!-- RIGHT: 3D card + stats -->
   <div class="heroRight">
     <!-- 3D floating card -->
     <div class="card3d">
@@ -626,22 +626,8 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       </div>
     </div>
 
-    <!-- Pulsing avatar with 3 ripple rings -->
-    <div class="avatarWrap">
-      <div class="ripple"></div>
-      <div class="ripple"></div>
-      <div class="ripple"></div>
-      <div class="avatarCircle">
-        <span class="avatarInitials">VS</span>
-      </div>
-    </div>
-
-    <!-- Stats column -->
+    <!-- Stats grid below card -->
     <div class="heroStats">
-      <div class="statBox">
-        <div class="statN" data-target="8" data-suffix="+">0</div>
-        <div class="statL">Years Exp.</div>
-      </div>
       <div class="statBox">
         <div class="statN" data-target="40" data-suffix="%">0</div>
         <div class="statL">Provisioning ↓</div>
@@ -649,6 +635,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="statBox">
         <div class="statN" data-target="30" data-suffix="%">0</div>
         <div class="statL">Escalation ↓</div>
+      </div>
+      <div class="statBox">
+        <div class="statN" data-target="97" data-suffix="%">0</div>
+        <div class="statL">Patch Compliance</div>
       </div>
     </div>
   </div>
@@ -669,9 +659,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
   <h2 class="sTitle reveal d1">A Little <em>About Me</em></h2>
   <div class="aboutGrid">
     <div class="aboutText reveal-l">
-      <p>IT Systems Specialist with <strong>8+ years</strong> supporting 500+ users. Specializing in endpoint management using <strong>Microsoft Intune, SCCM, JAMF</strong>.</p>
-      <p>Currently at <strong>Femmella Fashions India Limited</strong>, Gurgaon — providing L1/L2 support for 300+ users, managing Intune/Autopilot deployment (40% faster), and maintaining 99.5% uptime via ServiceNow.</p>
-      <p>Expertise spans Azure AD, PowerShell/Python automation, ITIL processes, Cisco infrastructure, and zero-downtime event support.</p>
+      <p>I started in the field doing hands-on break-fix work across branch offices — patching, racking, running cable. That ground-level experience is why I now think in systems, not just tickets.</p>
+      <p>Over 8 years I've moved from reactive support to proactive ownership: building the PowerShell scripts that eliminated manual provisioning at BCG, designing the SCCM deployment workflows that cut onboarding from 8 hours to under 4, and creating the knowledge base that dropped repeat incidents by 22%. I don't just resolve issues — I close the door so they don't come back.</p>
+      <p>Currently at <strong>Femmella Fashions India Limited</strong>, Gurgaon, maintaining <strong>99.5% uptime</strong> for 300+ users while leading Intune/Autopilot rollout and device compliance monitoring.</p>
       <div class="aboutPills">
         <span class="pill">Intune</span>
         <span class="pill">SCCM</span>
@@ -828,7 +818,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
     <div class="expItem reveal d2">
       <div class="expDot"></div>
       <div class="expDate">Aug 2022 – Jan 2026</div>
-      <div class="expRole">System Analyst</div>
+      <div class="expRole">System Administrator / Technical Support Specialist</div>
       <div class="expCo">Konverge Technology Pvt. Ltd. (Client: Boston Consulting Group) · Gurgaon, India</div>
       <ul class="expPts">
         <li>Served as Subject Matter Expert (SME) for endpoint management, supporting team members in resolving complex technical problems</li>
@@ -843,7 +833,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
     <div class="expItem reveal d3">
       <div class="expDot"></div>
       <div class="expDate">Mar 2018 – Aug 2022</div>
-      <div class="expRole">Desktop Support Engineer L1</div>
+      <div class="expRole">Desktop Support Engineer (L1 & L2)</div>
       <div class="expCo">Puthur Infotech Pvt. Ltd. · Patna, Bihar</div>
       <ul class="expPts">
         <li>Directed Windows 7 to Windows 10 migration project, deploying and configuring <strong>180+ systems</strong> using SCCM and PXE boot within a 6-week deadline</li>
@@ -907,10 +897,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projGlow"></div>
       <div class="projNum">01</div>
       <div class="projTitle">Fix Mate – IT Troubleshooting Utility</div>
-      <div class="projDesc">A lightweight (&lt;100 KB) .bat automation tool with interactive prompt-driven workflows. Implements self-resolution diagnostics guiding end-users through system issue identification — reducing ticket volume and IT support burden.</div>
+      <div class="projDesc">Lightweight (&lt;100 KB) .bat automation tool with prompt-driven self-resolution workflows. Deployed internally at Femmella — reduced L1 ticket volume by <strong>~35%</strong> within the first month by guiding users through common diagnostics before calling support.</div>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">Batch</span><span class="projTag">Automation</span></div>
-        <a href="https://github.com/Vikas3333-singh" target="_blank" class="projLink">
+        <a href="https://github.com/Vikas3333-singh/fixmate" target="_blank" class="projLink">
           <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           GitHub
         </a>
@@ -920,10 +910,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projGlow"></div>
       <div class="projNum">02</div>
       <div class="projTitle">Python Automation Suite</div>
-      <div class="projDesc">PDF Filler Automation for auto-populating dynamic forms from structured data, and Web Automation Scripts for data extraction, report generation, and routine form submissions — eliminating repetitive manual work.</div>
+      <div class="projDesc">PDF form auto-population from structured data sources, plus web scraping scripts for report generation and routine submissions. Eliminated <strong>3–4 hours/week</strong> of manual data-entry work across the IT ops team.</div>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">Python</span><span class="projTag">Web Automation</span></div>
-        <a href="https://github.com/Vikas3333-singh" target="_blank" class="projLink">
+        <a href="https://github.com/Vikas3333-singh/python-automation" target="_blank" class="projLink">
           <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           GitHub
         </a>
@@ -933,7 +923,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projGlow"></div>
       <div class="projNum">03</div>
       <div class="projTitle">IT Asset Tracker Dashboard</div>
-      <div class="projDesc">Power BI dashboard integrating ServiceNow asset data to provide real-time visibility into device lifecycle, warranty status, and assignment history — reducing manual reporting effort significantly.</div>
+      <div class="projDesc">Power BI dashboard pulling live data from ServiceNow to track <strong>500+ devices</strong> — warranty status, assignment history, lifecycle stage. Cut weekly manual reporting from 4 hours to under 20 minutes.</div>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">Power BI</span><span class="projTag">ServiceNow</span></div>
       </div>
@@ -942,9 +932,13 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projGlow"></div>
       <div class="projNum">04</div>
       <div class="projTitle">Onboarding Automation Script</div>
-      <div class="projDesc">PowerShell script that automates new-joiner IT setup — account creation, software push via SCCM, email configuration, and provisioning checklist generation. Cut onboarding time from hours to minutes.</div>
+      <div class="projDesc">PowerShell script automating new-joiner IT setup end-to-end — Azure AD account creation, SCCM software push, email config, and checklist generation. Cut average onboarding time from <strong>8 hours to under 4 hours</strong> (50% reduction).</div>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">PowerShell</span><span class="projTag">SCCM</span></div>
+        <a href="https://github.com/Vikas3333-singh/onboarding-automation" target="_blank" class="projLink">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
   </div>
@@ -1023,16 +1017,15 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
     <div class="contactCard reveal-r">
       <h3>Get In <span>Touch</span></h3>
       <p>Send a message. I'll respond within 24 hours.</p>
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
-        <input type="hidden" name="form-name" value="contact" />
+      <div class="contact-form" id="contactForm">
         <div style="display:flex;flex-direction:column;gap:16px">
-          <input type="text" name="name" placeholder="Your Name" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem">
-          <input type="email" name="email" placeholder="your@email.com" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem">
-          <textarea name="message" placeholder="Your Message" rows="4" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem;resize:vertical;font-family:inherit"></textarea>
-          <button type="submit" class="btnP" style="width:100%"><span>Send Message</span></button>
+          <input type="text" id="cf-name" placeholder="Your Name" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem">
+          <input type="email" id="cf-email" placeholder="your@email.com" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem">
+          <textarea id="cf-msg" placeholder="Your Message" rows="4" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem;resize:vertical;font-family:inherit"></textarea>
+          <button type="button" id="cf-submit" class="btnP" style="width:100%" onclick="sendEmail()"><span id="cf-btn-text">Send Message</span></button>
         </div>
-        <p style="font-size:.7rem;color:var(--muted);margin-top:12px;text-align:center">Deploy to Netlify for instant form backend.</p>
-      </form>
+        <p id="cf-status" style="font-size:.75rem;color:var(--muted);margin-top:12px;text-align:center;min-height:18px"></p>
+      </div>
     </div>
   </div>
 </section>
@@ -1053,7 +1046,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </a>
   </div>
-  <div class="fCopy">© 2025 Vikas Singh · All rights reserved</div>
+  <div class="fCopy">© 2026 Vikas Singh · All rights reserved</div>
 </footer>
 
 <div id="backTop" title="Back to top"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></div>
@@ -1250,10 +1243,10 @@ document.querySelectorAll('.projCard').forEach(card => {
    INFINITE MARQUEE — build items
 ══════════════════════════════════════ */
 const marqueeItems = [
-  'Microsoft Intune', 'Boston Consulting Group', 'SCCM', 'Femmella Fashions',
-  'JAMF', 'Azure Active Directory', 'ServiceNow', 'Konverge Technologies',
-  'PowerShell', 'ITIL 4', 'Python', 'Cisco DNA Centre',
-  'Windows Autopilot', 'Power BI', 'Rural Electrification Corp', 'Puthur Infotech'
+  'Microsoft Intune', 'SCCM', 'JAMF', 'Windows Autopilot',
+  'Azure Active Directory', 'ServiceNow', 'PowerShell', 'Python',
+  'Cisco DNA Centre', 'ITIL 4', 'Power BI', 'BMC Remedy',
+  'Microsoft 365', 'Windows 11', 'macOS Ventura', 'MFA & Zero Trust'
 ];
 const track = document.getElementById('marqueeTrack');
 // Build two copies for seamless loop
@@ -1263,6 +1256,62 @@ function buildMarqueeSet() {
   ).join('');
 }
 track.innerHTML = buildMarqueeSet() + buildMarqueeSet();
+/* ══════════════════════════════════════
+   EMAILJS CONTACT FORM
+   Steps to activate:
+   1. Sign up free at emailjs.com
+   2. Create an Email Service → copy Service ID
+   3. Create an Email Template → copy Template ID
+   4. Go to Account → copy Public Key
+   5. Replace the three placeholder strings below
+══════════════════════════════════════ */
+(function(){
+  const PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // ← replace
+  const SERVICE_ID  = 'YOUR_SERVICE_ID';   // ← replace
+  const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← replace
+
+  if (PUBLIC_KEY === 'YOUR_PUBLIC_KEY') return; // not configured yet — silent no-op
+  emailjs.init({ publicKey: PUBLIC_KEY });
+
+  window.sendEmail = function() {
+    const name  = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const msg   = document.getElementById('cf-msg').value.trim();
+    const status = document.getElementById('cf-status');
+    const btn    = document.getElementById('cf-submit');
+    const btnTxt = document.getElementById('cf-btn-text');
+
+    if (!name || !email || !msg) { status.textContent = 'Please fill in all fields.'; status.style.color = '#ff6b6b'; return; }
+
+    btnTxt.textContent = 'Sending…'; btn.disabled = true; status.textContent = '';
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, { from_name: name, from_email: email, message: msg })
+      .then(() => {
+        status.textContent = '✓ Message sent! I\'ll reply within 24 hours.';
+        status.style.color = 'var(--green)';
+        document.getElementById('cf-name').value = '';
+        document.getElementById('cf-email').value = '';
+        document.getElementById('cf-msg').value = '';
+        btnTxt.textContent = 'Send Message'; btn.disabled = false;
+      })
+      .catch(() => {
+        status.textContent = 'Something went wrong. Email me directly at vikaskumarsingh333@gmail.com';
+        status.style.color = '#ff6b6b';
+        btnTxt.textContent = 'Send Message'; btn.disabled = false;
+      });
+  };
+})();
+
+/* Fallback so button doesn't throw if EmailJS not configured */
+if (!window.sendEmail) {
+  window.sendEmail = function() {
+    const name  = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const msg   = document.getElementById('cf-msg').value.trim();
+    if (!name || !email || !msg) { document.getElementById('cf-status').textContent='Please fill in all fields.'; return; }
+    window.location.href = `mailto:vikaskumarsingh333@gmail.com?subject=Portfolio Enquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(msg)}%0A%0AFrom: ${encodeURIComponent(email)}`;
+  };
+}
 </script>
 </body>
 </html>
