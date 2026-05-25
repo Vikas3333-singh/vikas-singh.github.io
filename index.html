@@ -9,6 +9,9 @@
 <meta property="og:description" content="Enterprise IT Specialist - Endpoint Management, Automation & ITSM">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://yourdomain.com">
+<meta property="og:image" content="https://yourdomain.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#00d9f5">
 <style>
@@ -76,7 +79,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 /* ══════════════════════════════════════
    BG CANVAS
 ══════════════════════════════════════ */
-#bgCanvas{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.4;will-change:transform}
+#bgCanvas{display:none}
 
 /* ══════════════════════════════════════
    SCROLL PROGRESS
@@ -105,7 +108,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 64px;display:fl
 .hamburger span{width:22px;height:1.5px;background:var(--cyan);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1);display:block}
 .skip-link{position:absolute;top:-40px;left:6px;background:var(--cyan);color:#03090f;padding:12px 24px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-decoration:none;border-radius:4px;transition:top .25s;z-index:200}
 .skip-link:focus{top:12px}
-.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,217,245,.2)}
+.cf-input{padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem;width:100%;font-family:inherit}
+.cf-input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,217,245,.2)}
+textarea.cf-input{resize:vertical}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
@@ -180,14 +185,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 64px;display:fl
   box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
   position:relative;overflow:hidden;
-  animation:floatCard 6s ease-in-out infinite, rotateCard 12s linear infinite;
+  animation:floatCard 8s ease-in-out infinite;
   transform-style:preserve-3d;
 }
 @keyframes floatCard{
-  0%,100%{transform:translateY(0) rotateX(4deg) rotateY(-6deg)}
-  50%{transform:translateY(-18px) rotateX(-4deg) rotateY(6deg)}
-}
-@keyframes rotateCard{
   0%{transform:translateY(0) rotateX(4deg) rotateY(-6deg)}
   25%{transform:translateY(-10px) rotateX(-2deg) rotateY(8deg)}
   50%{transform:translateY(-18px) rotateX(4deg) rotateY(-4deg)}
@@ -534,7 +535,6 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
   .contactRippleWrap{display:none}
 }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 <a href="#about" class="skip-link">Skip to main content</a>
@@ -598,10 +598,11 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <span class="typeLabel">Role</span>
       <span id="typed"></span><span class="cursor-type"></span>
     </div>
-    <p class="heroDesc">IT Systems Specialist with <strong>8+ years</strong> of experience supporting enterprise environments and overseeing IT operations for <strong>500+ users</strong>. Specializing in endpoint management using Microsoft Intune, SCCM, and JAMF, with hands-on experience in device onboarding, user account administration, and MFA troubleshooting. Proven track record of reducing system provisioning time by <strong>40%</strong> and escalation rates by <strong>30%</strong> through process improvements, automation, and structured ITIL-based incident management.</p>
+    <p class="heroDesc"><strong>8+ years</strong> turning endpoint chaos into enterprise calm — Intune, SCCM &amp; JAMF across <strong>500+ users</strong>. Cut provisioning by <strong>40%</strong>, escalations by <strong>30%</strong>. ITIL 4 certified. Currently at BCG.</p>
     <div class="heroActions">
       <a href="#experience" class="btnP"><span>View Experience</span></a>
       <a href="#contact" class="btnO">Get In Touch</a>
+      <a href="resume-vikas-singh.pdf" download class="btnO" style="display:inline-flex;align-items:center;gap:6px">↓ Resume</a>
     </div>
   </div>
 
@@ -654,7 +655,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
 <div class="divLine"></div>
 
 <!-- ABOUT -->
-<section class="altBg">
+<section class="altBg" id="about-section">
   <div class="sLabel reveal">Who I Am</div>
   <h2 class="sTitle reveal d1">A Little <em>About Me</em></h2>
   <div class="aboutGrid">
@@ -735,15 +736,15 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="skTags"><span class="skTag">ServiceNow</span><span class="skTag">ITIL</span><span class="skTag">BMC Remedy</span></div>
     </div>
 
-    <div class="skCard d4" data-prof="88">
-      <div class="skIcon"><svg viewBox="0 0 24 24"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg></div>
-      <div class="skName">ITSM & ServiceNow</div>
-      <div class="skDesc">Incident, change, and asset management with ITIL 4 best practices — CMDB, SLA tracking, and reporting.</div>
+    <div class="skCard d4" data-prof="84">
+      <div class="skIcon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="4" rx="1"/><rect x="1" y="12" width="22" height="4" rx="1"/><line x1="5" y1="8" x2="5" y2="12"/><line x1="19" y1="8" x2="19" y2="12"/><line x1="12" y1="16" x2="12" y2="20"/><rect x="9" y="19" width="6" height="2" rx="1"/></svg></div>
+      <div class="skName">Networking &amp; Infrastructure</div>
+      <div class="skDesc">Cisco DNA Centre, LAN/WAN, VPN, DHCP/DNS — monitoring, troubleshooting, and 99.5% uptime maintenance.</div>
       <div class="skProgress">
-        <div class="skBar" style="--prof-pct:88%"></div>
-        <span class="skPerc">88%</span>
+        <div class="skBar" style="--prof-pct:84%"></div>
+        <span class="skPerc">84%</span>
       </div>
-      <div class="skTags"><span class="skTag">ServiceNow</span><span class="skTag">ITIL 4</span><span class="skTag">CMDB</span></div>
+      <div class="skTags"><span class="skTag">Cisco</span><span class="skTag">VPN</span><span class="skTag">LAN/WAN</span></div>
     </div>
 
     <div class="skCard d5" data-prof="85">
@@ -879,9 +880,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="achDesc">Built and deployed structured SOPs and a team knowledge base at Puthur Infotech — trained junior staff, reduced repeat escalations, and improved first-call resolution by 22% within 6 months.</div>
     </div>
     <div class="achCard reveal d4">
-      <div class="achIcoWrap"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
-      <div class="achTitle">Documentation Impact</div>
-      <div class="achDesc">Built comprehensive SOPs and knowledge base that reduced repeat incidents and improved first-contact resolution.</div>
+      <div class="achIcoWrap"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg></div>
+      <div class="achTitle">180-System OS Migration</div>
+      <div class="achDesc">Led Windows 7 → 10 migration at Puthur Infotech — deployed 180+ systems via SCCM and PXE boot within a 6-week deadline, zero rollbacks.</div>
     </div>
   </div>
 </section>
@@ -900,7 +901,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projDesc">Lightweight (&lt;100 KB) .bat automation tool with prompt-driven self-resolution workflows. Deployed internally at Femmella — reduced L1 ticket volume by <strong>~35%</strong> within the first month by guiding users through common diagnostics before calling support.</div>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">Batch</span><span class="projTag">Automation</span></div>
-        <a href="https://github.com/Vikas3333-singh/fixmate" target="_blank" class="projLink">
+        <a href="https://github.com/Vikas3333-singh/fixmate" target="_blank" rel="noopener noreferrer" class="projLink">
           <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           GitHub
         </a>
@@ -913,10 +914,6 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projDesc">PDF form auto-population from structured data sources, plus web scraping scripts for report generation and routine submissions. Eliminated <strong>3–4 hours/week</strong> of manual data-entry work across the IT ops team.</div>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">Python</span><span class="projTag">Web Automation</span></div>
-        <a href="https://github.com/Vikas3333-singh/python-automation" target="_blank" class="projLink">
-          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
-        </a>
       </div>
     </div>
     <div class="projCard reveal-l d3">
@@ -935,10 +932,6 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <div class="projDesc">PowerShell script automating new-joiner IT setup end-to-end — Azure AD account creation, SCCM software push, email config, and checklist generation. Cut average onboarding time from <strong>8 hours to under 4 hours</strong> (50% reduction).</div>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">PowerShell</span><span class="projTag">SCCM</span></div>
-        <a href="https://github.com/Vikas3333-singh/onboarding-automation" target="_blank" class="projLink">
-          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
-        </a>
       </div>
     </div>
   </div>
@@ -1001,11 +994,11 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
         <div class="cIconWrap"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div class="cVal">vikaskumarsingh333@gmail.com</div>
       </a>
-      <a href="https://linkedin.com/in/vikassingh-eucengineer" target="_blank" class="cItem reveal d3">
+      <a href="https://linkedin.com/in/vikassingh-eucengineer" target="_blank" rel="noopener noreferrer" class="cItem reveal d3">
         <div class="cIconWrap"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
         <div><div class="cLbl">LinkedIn</div><div class="cVal">linkedin.com/in/vikassingh-eucengineer</div></div>
       </a>
-      <a href="https://github.com/Vikas3333-singh" target="_blank" class="cItem reveal d4">
+      <a href="https://github.com/Vikas3333-singh" target="_blank" rel="noopener noreferrer" class="cItem reveal d4">
         <div class="cIconWrap"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
         <div><div class="cLbl">GitHub</div><div class="cVal">github.com/Vikas3333-singh</div></div>
       </a>
@@ -1019,9 +1012,9 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
       <p>Send a message. I'll respond within 24 hours.</p>
       <div class="contact-form" id="contactForm">
         <div style="display:flex;flex-direction:column;gap:16px">
-          <input type="text" id="cf-name" placeholder="Your Name" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem">
-          <input type="email" id="cf-email" placeholder="your@email.com" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem">
-          <textarea id="cf-msg" placeholder="Your Message" rows="4" required style="padding:12px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--text);font-size:.9rem;resize:vertical;font-family:inherit"></textarea>
+          <input type="text" id="cf-name" placeholder="Your Name" required class="cf-input">
+          <input type="email" id="cf-email" placeholder="your@email.com" required class="cf-input">
+          <textarea id="cf-msg" placeholder="Your Message" rows="4" required class="cf-input"></textarea>
           <button type="button" id="cf-submit" class="btnP" style="width:100%" onclick="sendEmail()"><span id="cf-btn-text">Send Message</span></button>
         </div>
         <p id="cf-status" style="font-size:.75rem;color:var(--muted);margin-top:12px;text-align:center;min-height:18px"></p>
@@ -1036,10 +1029,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
     <div class="fSub">System Analyst · Gurgaon</div>
   </div>
   <div class="fSocials">
-    <a href="https://linkedin.com/in/vikassingh-eucengineer" target="_blank" class="fSocial" title="LinkedIn">
+    <a href="https://linkedin.com/in/vikassingh-eucengineer" target="_blank" rel="noopener noreferrer" class="fSocial" title="LinkedIn">
       <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
     </a>
-    <a href="https://github.com/Vikas3333-singh" target="_blank" class="fSocial" title="GitHub">
+    <a href="https://github.com/Vikas3333-singh" target="_blank" rel="noopener noreferrer" class="fSocial" title="GitHub">
       <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
     </a>
     <a href="mailto:vikaskumarsingh333@gmail.com" class="fSocial" title="Email">
@@ -1056,15 +1049,20 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
    LOADING SCREEN
 ══════════════════════════════════════ */
 window.addEventListener('load', () => {
+  const elapsed = Date.now() - performance.timing.navigationStart;
+  const remaining = Math.max(0, 400 - elapsed);
   setTimeout(() => {
     document.getElementById('loader').classList.add('hidden');
-  }, 1500);
+  }, remaining);
 });
 
 /* ══════════════════════════════════════
    CURSOR
 ══════════════════════════════════════ */
 const cur = document.getElementById('cur'), curR = document.getElementById('curR');
+if ('ontouchstart' in window) {
+  cur.style.display = 'none'; curR.style.display = 'none';
+} else {
 let mx = 0, my = 0, rx = 0, ry = 0;
 document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px' });
 (function loopCursor() {
@@ -1076,13 +1074,23 @@ document.querySelectorAll('a,button,.skCard,.certCard,.projCard,.cItem,.achCard,
   el.addEventListener('mouseenter', () => { cur.style.width = '18px'; cur.style.height = '18px'; cur.style.background = 'var(--green)'; curR.style.width = '48px'; curR.style.height = '48px'; curR.style.borderColor = 'rgba(0,232,162,.45)' });
   el.addEventListener('mouseleave', () => { cur.style.width = '8px'; cur.style.height = '8px'; cur.style.background = 'var(--cyan)'; curR.style.width = '34px'; curR.style.height = '34px'; curR.style.borderColor = 'rgba(0,217,245,.3)' });
 });
+}
 
 /* ══════════════════════════════════════
    HAMBURGER
 ══════════════════════════════════════ */
 const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open') });
-function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open') }
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', hamburger.classList.contains('open'));
+});
+function closeMobile() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) closeMobile(); });
 
 /* ══════════════════════════════════════
    BACK TO TOP
@@ -1095,56 +1103,21 @@ backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smo
    SCROLL PROGRESS
 ══════════════════════════════════════ */
 const prog = document.getElementById('prog');
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  prog.style.width = pct + '%';
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      prog.style.width = pct + '%';
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
 });
 
 /* ══════════════════════════════════════
-   PARTICLE NETWORK CANVAS
+   BG CANVAS — removed (CSS orbs used instead)
 ══════════════════════════════════════ */
-const canvas = document.getElementById('bgCanvas'), ctx = canvas.getContext('2d');
-let W, H, particles = [], canvasInited = false;
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight }
-function initCanvas() {
-  if (canvasInited) return;
-  resize();
-  window.addEventListener('resize', resize);
-  class P {
-    constructor() { this.reset(true) }
-    reset(init) {
-      this.x = Math.random() * W; this.y = init ? Math.random() * H : H + 10;
-      this.vx = (Math.random() - .5) * .18; this.vy = (Math.random() - .5) * .18;
-      this.r = Math.random() * 1.1 + .2; this.alpha = 0;
-      this.targetAlpha = Math.random() * .35 + .04;
-      this.color = Math.random() > .65 ? '0,217,245' : Math.random() > .5 ? '124,58,237' : '0,232,162';
-      this.life = 0; this.maxLife = 250 + Math.random() * 350;
-    }
-    update() {
-      this.x += this.vx; this.y += this.vy; this.life++;
-      if (this.life < 40) this.alpha += this.targetAlpha / 40;
-      else if (this.life > this.maxLife - 40) this.alpha -= this.targetAlpha / 40;
-      if (this.life >= this.maxLife || this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) this.reset();
-    }
-    draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(${this.color},${Math.max(0, this.alpha)})`; ctx.fill() }
-  }
-  for (let i = 0; i < 90; i++) particles.push(new P());
-  canvasInited = true;
-}
-function drawLines() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, d = Math.sqrt(dx * dx + dy * dy);
-      if (d < 100) {
-        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(0,217,245,${(1 - d / 100) * .03})`; ctx.lineWidth = .4; ctx.stroke();
-      }
-    }
-  }
-}
-function animCanvas() { ctx.clearRect(0, 0, W, H); particles.forEach(p => { p.update(); p.draw() }); drawLines(); requestAnimationFrame(animCanvas) }
-const canvasObs = new IntersectionObserver(e => { if (e[0].isIntersecting) { initCanvas(); animCanvas(); canvasObs.unobserve(canvas) } }, { threshold: 0.01 });
-canvasObs.observe(canvas);
 
 /* ══════════════════════════════════════
    TYPEWRITER
@@ -1240,8 +1213,14 @@ document.querySelectorAll('.projCard').forEach(card => {
 });
 
 /* ══════════════════════════════════════
-   INFINITE MARQUEE — build items
+   PAGE VISIBILITY — pause animations when hidden
 ══════════════════════════════════════ */
+document.addEventListener('visibilitychange', () => {
+  const state = document.hidden ? 'paused' : 'running';
+  document.querySelectorAll('.orb,.contactRipple,.card3d').forEach(el => {
+    el.style.animationPlayState = state;
+  });
+});
 const marqueeItems = [
   'Microsoft Intune', 'SCCM', 'JAMF', 'Windows Autopilot',
   'Azure Active Directory', 'ServiceNow', 'PowerShell', 'Python',
@@ -1257,20 +1236,26 @@ function buildMarqueeSet() {
 }
 track.innerHTML = buildMarqueeSet() + buildMarqueeSet();
 /* ══════════════════════════════════════
-   EMAILJS CONTACT FORM
-   Steps to activate:
-   1. Sign up free at emailjs.com
-   2. Create an Email Service → copy Service ID
-   3. Create an Email Template → copy Template ID
-   4. Go to Account → copy Public Key
-   5. Replace the three placeholder strings below
+   EMAILJS — lazy load when contact section enters view
 ══════════════════════════════════════ */
-(function(){
+const emailjsObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    s.onload = initEmailJS;
+    document.body.appendChild(s);
+    emailjsObs.disconnect();
+  }
+}, { threshold: 0.01 });
+const contactSection = document.getElementById('contact');
+if (contactSection) emailjsObs.observe(contactSection);
+
+function initEmailJS() {
   const PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // ← replace
   const SERVICE_ID  = 'YOUR_SERVICE_ID';   // ← replace
   const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // ← replace
 
-  if (PUBLIC_KEY === 'YOUR_PUBLIC_KEY') return; // not configured yet — silent no-op
+  if (PUBLIC_KEY === 'YOUR_PUBLIC_KEY') return;
   emailjs.init({ publicKey: PUBLIC_KEY });
 
   window.sendEmail = function() {
@@ -1300,7 +1285,7 @@ track.innerHTML = buildMarqueeSet() + buildMarqueeSet();
         btnTxt.textContent = 'Send Message'; btn.disabled = false;
       });
   };
-})();
+}
 
 /* Fallback so button doesn't throw if EmailJS not configured */
 if (!window.sendEmail) {
