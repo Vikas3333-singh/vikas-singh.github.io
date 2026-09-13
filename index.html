@@ -420,6 +420,13 @@ section{position:relative;z-index:2;padding:110px 64px}
    PROJECTS
 ══════════════════════════════════════ */
 .projGrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.projGrid .projCard.wide{grid-column:1/-1}
+.projBullets{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:2px}
+.projBullets li{font-size:.82rem;color:rgba(221,232,245,.65);line-height:1.78;padding-left:16px;position:relative}
+.projBullets li::before{content:'';position:absolute;left:0;top:.65em;width:5px;height:1px;background:var(--cyan);opacity:.6}
+.projBullets li strong{color:var(--text);font-weight:500}
+.projSubName{font-size:.85rem;font-weight:600;color:var(--text);margin:14px 0 4px}
+.projSubName:first-child{margin-top:0}
 .projCard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:36px;position:relative;overflow:hidden;transition:all .35s;display:flex;flex-direction:column}
 .projCard:hover{transform:translateY(-6px);border-color:rgba(124,58,237,.35);box-shadow:0 28px 70px rgba(124,58,237,.1)}
 /* top-border gradient sweep on hover */
@@ -971,31 +978,60 @@ footer{position:relative;z-index:2;border-top:1px solid var(--border);padding:28
     <div class="projCard reveal-l d1">
       <div class="projGlow"></div>
       <div class="projNum">01</div>
-      <div class="projTitle">IT Troubleshooting Utility</div>
-      <div class="projDesc">Lightweight (<strong>&lt;100 KB</strong>) .bat automation tool with prompt-driven self-resolution workflows. Guides users through network diagnostics, DNS recovery, Windows Update fixes, user profile repair, and app troubleshooting <strong>without L1 intervention</strong>. In production, reduced L1 ticket volume <strong>from 150/week to 98/week (35% reduction)</strong> in first month. Active enterprise deployment.</div>
+      <div class="projTitle">Advanced IT Troubleshooting Utility</div>
+      <ul class="projBullets">
+        <li>Engineered a self-service diagnostic tool (<strong>&lt;100 KB</strong>) deployed across <strong>250+ endpoints</strong> at Boston Consulting Group, enabling end-users to independently resolve the most common day-to-day IT issues without raising a ticket.</li>
+        <li>Automated <strong>8 critical remediation workflows</strong> via an interactive menu: network stack reset, DNS cache flush, Windows Update repair, printer spooler fix, disk cleanup, user profile repair, Windows error diagnostics, and system performance optimization.</li>
+        <li>Reduced repeat L1 tickets for common issues by enabling end-user self-service — freeing helpdesk capacity for genuine L2/L3 escalations.</li>
+      </ul>
       <div class="projFooter">
         <div class="projTags"><span class="projTag">Batch</span><span class="projTag">Automation</span><span class="projTag">Self-Service</span></div>
-        <a href="https://github.com/Vikas3333-singh/README.md.git" target="_blank" rel="noopener noreferrer" class="projLink">View <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        <a href="https://vikas3333-singh.github.io/Advanced-IT-Troubleshooting-Utility/" target="_blank" rel="noopener noreferrer" class="projLink">View <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
       </div>
     </div>
     <div class="projCard reveal-r d2">
       <div class="projGlow"></div>
       <div class="projNum">02</div>
-      <div class="projTitle">IT Asset Tracker Dashboard</div>
-      <div class="projDesc">Browser-based dashboard built with HTML, JavaScript, and Chart.js. Drag-drop Excel upload, auto-detects headers, renders live compliance charts, supports column-level filtering — zero backend dependency. Replaced manual ServiceNow reports with interactive asset lifecycle view for non-technical stakeholders.</div>
+      <div class="projTitle">Lenovo E-Ticket Automation (Ticket Forge)</div>
+      <ul class="projBullets">
+        <li>Built <strong>Ticket Forge</strong>, a Python + Selenium automation tool that replaced fully manual Lenovo hardware support ticketing — handling bulk submissions, auto case ID capture, and Excel tracker updates end-to-end.</li>
+        <li>Automated <strong>30+ tickets/month</strong>, cutting portal interaction time from hours to <strong>under 5 minutes</strong> and eliminating copy-paste errors in case tracking.</li>
+        <li>Implemented error handling with reason-coded flags for failed submissions, ensuring <strong>zero silent failures</strong> in bulk runs.</li>
+      </ul>
       <div class="projFooter">
-        <div class="projTags"><span class="projTag">HTML/JS</span><span class="projTag">Chart.js</span><span class="projTag">Excel</span></div>
-        <a href="https://github.com/Vikas3333-singh/it-asset-tracker.git" target="_blank" rel="noopener noreferrer" class="projLink">View <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        <div class="projTags"><span class="projTag">Python</span><span class="projTag">Selenium</span><span class="projTag">Excel</span></div>
+        <a href="https://vikas3333-singh.github.io/Lenovo-E-Ticket-Automation/" target="_blank" rel="noopener noreferrer" class="projLink">View <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
       </div>
     </div>
-    <div class="projCard reveal-l d3">
+    <div class="projCard wide reveal-l d3">
       <div class="projGlow"></div>
       <div class="projNum">03</div>
-      <div class="projTitle">Lenovo E-Ticket Automation System for Hardware Support Management</div>
-      <div class="projDesc"><strong>Aug 2025 – Present (Full-time)</strong>. Developed an automation solution to streamline Lenovo hardware support ticket creation and tracking, cutting manual effort for IT staff. Integrates device and incident details to auto-generate e-tickets, improving data accuracy and response times on hardware issues across the support workflow.</div>
+      <div class="projTitle">Python Automation Suite</div>
+      <div class="projSubName">PDF Filler Automation</div>
+      <ul class="projBullets">
+        <li>Auto-populating dynamic forms with data inputs to eliminate repetitive manual work.</li>
+      </ul>
+      <div class="projSubName">Web Automation Scripts</div>
+      <ul class="projBullets">
+        <li>Automated web-based tasks such as data extraction, report generation, and routine form submissions.</li>
+      </ul>
       <div class="projFooter">
-        <div class="projTags"><span class="projTag">Automation</span><span class="projTag">Hardware Support</span><span class="projTag">Ticketing</span></div>
-        <a href="https://github.com/Vikas3333-singh/TicketForge.git" target="_blank" rel="noopener noreferrer" class="projLink">View <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        <div class="projTags"><span class="projTag">Python</span><span class="projTag">PDF</span><span class="projTag">Web Automation</span></div>
+      </div>
+    </div>
+    <div class="projCard reveal-r d4">
+      <div class="projGlow"></div>
+      <div class="projNum">04</div>
+      <div class="projTitle">IT Asset Tracker</div>
+      <ul class="projBullets">
+        <li>Built a browser-based dashboard at <strong>Femmella Fashions</strong> to replace scattered Excel sheets that were costing the support team hours every week just to answer "who has this device?" or "what's in stock?"</li>
+        <li>Loads existing Excel files directly — <strong>no migration, no backend, no installation</strong>. Auto-detects headers, maps messy column names, and tolerates typos.</li>
+        <li>Shows live KPIs, <strong>4 interactive charts</strong>, and filter-aware search, with one-click export of filtered views back to Excel.</li>
+        <li>Gave the support team instant asset visibility without needing ServiceNow access — <strong>~35% reduction in L1 ticket volume</strong> in the first month.</li>
+      </ul>
+      <div class="projFooter">
+        <div class="projTags"><span class="projTag">HTML5</span><span class="projTag">Chart.js</span><span class="projTag">SheetJS</span></div>
+        <a href="https://github.com/Vikas3333-singh/it-asset-tracker" target="_blank" rel="noopener noreferrer" class="projLink">View <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
       </div>
     </div>
   </div>
